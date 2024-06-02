@@ -4,7 +4,7 @@ import sys
 
 
 class GraphicEngine:
-    def __init__(self, win_size=(600, 600)):
+    def __init__(self, win_size=(400, 200)):
         pg.init()
 
         self.WIN_SIZE = win_size
