@@ -14,5 +14,18 @@ Paseo virtual 3D utilizando lenguaje Pyhton usando OPENGL en esta simulacion pod
 - Hestia
 - Demeter
 
+## Installation
+Dependencias utilizadas
+```bash
+pip install pygame
+pip install sys
+pip install moderngl
+
+```
+
+
+
+    
+
 
 
