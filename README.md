@@ -1,7 +1,9 @@
 # Greek museums
 ![Logo](https://rialta.org/wp-content/uploads/2022/08/Louvre.jpg)
 
-Greek museums are guardians of Greece's rich cultural heritage, housing treasures dating back to classical antiquity. From sculptures and ceramics to representations of gods and important figures, these museums offer a unique window into ancient Greek civilization, highlighting its achievements in art, philosophy, and architecture. This project aims to honor these memories and provide an educational cultural immersion, preserving and celebrating Greece's rich heritage. Join us on this journey through time and discover the treasures of ancient Greece.
+The Greek museums are guardians of Greece's rich cultural heritage, housing treasures dating back to classical antiquity. From sculptures and ceramics to depictions of gods and important figures, these museums offer a unique window into ancient Greek civilization, highlighting its achievements in art, philosophy, and architecture. This project seeks to honor these memories and provide an educational cultural immersion, preserving and celebrating Greece's rich heritage.
+
+In our current project, we are utilizing OpenGL with Python to build innovative graphic applications. Our combination of programming and design skills allows us to create interactive and captivating environments that go beyond the traditional boundaries of computational visualization. We are excited to share our work and explore new possibilities in the world of graphic programming with OpenGL and Python.
 
 ## The next thing to watch
 
