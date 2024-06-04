@@ -1,12 +1,10 @@
 import pygame as pg
 import moderngl as mgl
 import sys
-from model import *
-from camera import Camera
 
 
 class GraphicEngine:
-    def __init__(self, win_size=(1000, 600)):
+    def __init__(self, win_size=(400, 200)):
         pg.init()
 
         self.WIN_SIZE = win_size
@@ -19,23 +17,16 @@ class GraphicEngine:
         self.ctx = mgl.create_context()
         #create an object to help track the time
         self.clock = pg.time.Clock()
-        #Camara
-        self.camera = Camera(self)
-        #escena
-        self.scene = Cube(self)
-
 
     def check_events(self):
         for event in pg.event.get():
             if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.type == pg.K_ESCAPE):
-                self.scene.destroy()
                 pg.quit()
                 sys.exit()
 
     def render(self):
         # clear framebuffer
-        self.ctx.clear(color=(0.08, 0.16, 0.18, 1))
-        self.scene.render()
+        self.ctx.clear(color=(0.01, 0.0, 0.1, 1))
         pg.display.flip()
 
     def run(self):
