@@ -5,7 +5,7 @@ FOV = 50  # deg
 NEAR = 0.1
 FAR = 100
 SPEED = 0.005
-SENSITIVITY = 0.04
+SENSITIVITY = 0.08
 
 
 class Camera:
@@ -16,6 +16,7 @@ class Camera:
         self.up = glm.vec3(0, 1, 0)
         self.right = glm.vec3(1, 0, 0)
         self.forward = glm.vec3(0, 0, -1)
+        self.limit = glm.vec2(10, -10)
         self.yaw = yaw
         self.pitch = pitch
         # view matrix
@@ -31,11 +32,9 @@ class Camera:
 
     def update_camera_vectors(self):
         yaw, pitch = glm.radians(self.yaw), glm.radians(self.pitch)
-
         self.forward.x = glm.cos(yaw) * glm.cos(pitch)
         self.forward.y = glm.sin(pitch)
         self.forward.z = glm.sin(yaw) * glm.cos(pitch)
-
         self.forward = glm.normalize(self.forward)
         self.right = glm.normalize(glm.cross(self.forward, glm.vec3(0, 1, 0)))
         self.up = glm.normalize(glm.cross(self.right, self.forward))
@@ -50,17 +49,31 @@ class Camera:
         velocity = SPEED * self.app.delta_time
         keys = pg.key.get_pressed()
         if keys[pg.K_w]:
-            self.position += self.forward * velocity
+            x_aux = self.position[0] + self.forward[0] * velocity
+            z_aux = self.position[2] + self.forward[2] * velocity
+            if self.limit[0] > z_aux > self.limit[1] and self.limit[0] > x_aux > self.limit[1]:
+                self.position[0] = x_aux
+                self.position[2] = z_aux
         if keys[pg.K_s]:
-            self.position -= self.forward * velocity
+            x_aux = self.position[0] - self.forward[0] * velocity
+            z_aux = self.position[2] - self.forward[2] * velocity
+            if self.limit[0] < z_aux < self.limit[1] and self.limit[0] < x_aux < self.limit[1]:
+                self.position[0] = x_aux
+                self.position[2] = z_aux
         if keys[pg.K_a]:
-            self.position -= self.right * velocity
+            x_aux = self.position[0] - self.right[0] * velocity
+            z_aux = self.position[2] - self.right[2] * velocity
+            if self.limit[0] < z_aux < self.limit[1] and self.limit[0] < x_aux < self.limit[1]:
+                self.position[0] = x_aux
+                self.position[2] = z_aux
         if keys[pg.K_d]:
-            self.position += self.right * velocity
-        if keys[pg.K_q]:
-            self.position += self.up * velocity
-        if keys[pg.K_e]:
-            self.position -= self.up * velocity
+            x_aux = self.position[0] + self.right[0] * velocity
+            z_aux = self.position[2] + self.right[2] * velocity
+            if self.limit[0] > z_aux > self.limit[1] and self.limit[0] > x_aux > self.limit[1]:
+                self.position[0] = x_aux
+                self.position[2] = z_aux
+        if keys[pg.K_w] or keys[pg.K_s] or keys[pg.K_a] or keys[pg.K_d]:
+            print(self.position)
 
     def get_view_matrix(self):
         return glm.lookAt(self.position, self.position + self.forward, self.up)
