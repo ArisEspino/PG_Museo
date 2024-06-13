@@ -1,104 +1,105 @@
-import pygame
-from pygame.locals import *
-from OpenGL.GL import *
-from OpenGL.GLU import *
-from PIL import Image
+import pygame as pg
+import moderngl as mgl
+import sys
+from model import *
+from camera import Camera
+from light import Light
+from mesh import Mesh
+from scene import Scene
+from scene_renderer import SceneRenderer
 
-# Posición de la cámara
-camera_pos = [0.0, 0.0, 5.0]
-camera_speed = 0.1
+class GraphicsEngine:
+    def __init__(self, win_size=(500, 400)):
+        # init pygame modules
+        pg.init()
+        # window size
+        self.WIN_SIZE = win_size
+        # set opengl attr
+        pg.display.gl_set_attribute(pg.GL_CONTEXT_MAJOR_VERSION, 3)
+        pg.display.gl_set_attribute(pg.GL_CONTEXT_MINOR_VERSION, 3)
+        pg.display.gl_set_attribute(pg.GL_CONTEXT_PROFILE_MASK, pg.GL_CONTEXT_PROFILE_CORE)
+        # create opengl context
+        pg.display.set_mode(self.WIN_SIZE, flags=pg.OPENGL | pg.DOUBLEBUF)
+        # mouse settings
+        pg.event.set_grab(True)
+        pg.mouse.set_visible(False)
+        # detect and use existing opengl context
+        self.ctx = mgl.create_context()
+        # self.ctx.front_face = 'cw'
+        self.ctx.enable(flags=mgl.DEPTH_TEST | mgl.CULL_FACE)
+        # create an object to help track time
+        self.clock = pg.time.Clock()
+        self.time = 0
+        self.delta_time = 0
+        # light
+        self.light = Light()
+        # camera
+        self.camera = Camera(self)
+        # mesh
+        self.mesh = Mesh(self)
+        # scene
+        self.scene = Scene(self)
+        # renderer
+        self.scene_renderer = SceneRenderer(self)
 
-def load_texture(texture_file):
-    image = Image.open(texture_file)
-    image = image.transpose(Image.Transpose.FLIP_TOP_BOTTOM)
-    img_data = image.convert("RGBA").tobytes()
-    texture_id = glGenTextures(1)
-    glBindTexture(GL_TEXTURE_2D, texture_id)
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.width, image.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, img_data)
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
-    return texture_id
+    def check_events(self):
+        for event in pg.event.get():
+            if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
+                self.mesh.destroy()
+                self.scene_renderer.destroy()
+                pg.quit()
+                sys.exit()
 
-def load_obj(filename):
-    vertices = []
-    texcoords = []
-    faces = []
+    def render(self):
+        # clear framebuffer
+        self.ctx.clear(color=(0.08, 0.16, 0.18))
+        # render scene
+        self.scene_renderer.render()
+        # swap buffers
+        pg.display.flip()
 
-    with open(filename) as f:
-        for line in f:
-            if line.startswith('v '):
-                vertices.append(list(map(float, line.strip().split()[1:])))
-            elif line.startswith('vt '):
-                texcoords.append(list(map(float, line.strip().split()[1:])))
-            elif line.startswith('f '):
-                face = []
-                tex_face = []
-                for vert in line.strip().split()[1:]:
-                    values = vert.split('/')
-                    v = int(values[0]) - 1
-                    t = int(values[1]) - 1 if len(values) > 1 and values[1] else 0
-                    face.append(vertices[v])
-                    tex_face.append(texcoords[t])
-                faces.append((face, tex_face))
-    return faces
+    def get_time(self):
+        self.time = pg.time.get_ticks() * 0.001
 
-def draw_model(faces, texture_id):
-    glEnable(GL_TEXTURE_2D)
-    glBindTexture(GL_TEXTURE_2D, texture_id)
-    glBegin(GL_TRIANGLES)
-    for face, tex_face in faces:
-        for i in range(len(face)):
-            glTexCoord2fv(tex_face[i])
-            glVertex3fv(face[i])
-    glEnd()
-    glDisable(GL_TEXTURE_2D)
+    def run(self):
+        while True:
+            self.get_time()
+            self.check_events()
+            self.camera.update()
+            self.render()
+            self.delta_time = self.clock.tick(60)
 
-def main():
-    pygame.init()
-    pygame.display.set_mode((800, 600), DOUBLEBUF | OPENGL)
-    gluPerspective(45, (800/600), 0.1, 50.0)
-    glTranslatef(0.0, 0.0, -5)  # Iniciar la cámara un poco lejos
-    glClearColor(0.2, 0.3, 0.3, 1.0)
 
-    # Cargar el modelo 3D
-    try:
-        faces = load_obj('cubo2.obj')
-        print("Model loaded successfully")
-    except Exception as e:
-        print(f"Error loading model: {e}")
-        return
+if __name__ == '__main__':
+    app = GraphicsEngine()
+    app.run()
 
-    # Cargar la textura
-    global texture_id
-    texture_id = load_texture('OIP.jpg')
 
-    # Inicializar el módulo de sonido y cargar el sonido
-    # pygame.mixer.init()
-    # sound = pygame.mixer.Sound('ambiente.mp3')
-    # sound.play()
 
-    global camera_pos
 
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                return
 
-        keys = pygame.key.get_pressed()
-        if keys[K_w]:
-            glTranslatef(0, 0, camera_speed)
-        if keys[K_s]:
-            glTranslatef(0, 0, -camera_speed)
-        if keys[K_a]:
-            glTranslatef(camera_speed, 0, 0)
-        if keys[K_d]:
-            glTranslatef(-camera_speed, 0, 0)
 
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-        draw_model(faces, texture_id)
-        pygame.display.flip()
-        pygame.time.wait(10)
 
-if __name__ == "__main__":
-    main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
