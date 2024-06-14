@@ -3,7 +3,7 @@ import vtk
 
 def main():
     # Ruta
-    absolute_file_path = 'C:/Users/kelly vallecillo/Downloads/PG_Museo/modelo/thismuseo.obj'
+    absolute_file_path = 'C:/Users/kelly vallecillo/Downloads/PG_Museo/modelo/museoblack.obj'
 
     #this is for know about the object status
     if not os.path.isfile(absolute_file_path):
