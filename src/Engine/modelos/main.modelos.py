@@ -9,9 +9,10 @@ from scene import Scene
 from scene_renderer import SceneRenderer
 
 class GraphicsEngine:
-    def __init__(self, win_size=(500, 400)):
+    def __init__(self, win_size=(600, 500)):
         # init pygame modules
         pg.init()
+        pg.mixer.init()
         # window size
         self.WIN_SIZE = win_size
         # set opengl attr
@@ -41,6 +42,9 @@ class GraphicsEngine:
         self.scene = Scene(self)
         # renderer
         self.scene_renderer = SceneRenderer(self)
+
+
+
 
     def check_events(self):
         for event in pg.event.get():

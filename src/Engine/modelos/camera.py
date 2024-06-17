@@ -28,6 +28,10 @@ class Camera:
         # projection matrix
         self.m_proj = self.get_projection_matrix()
 
+        # Load sound
+        self.sound = pg.mixer.Sound('sounds/Zeus.mp3')
+        self.sound_playing = False
+
     def rotate(self):
         rel_x, rel_y = pg.mouse.get_rel()
         self.yaw += rel_x * SENSITIVITY
@@ -58,6 +62,10 @@ class Camera:
         if self.dis < 5:
             if keys[pg.K_p]:
                 print("Hola")
+                self.sound.play()
+        else:
+            self.sound.stop()
+
         if keys[pg.K_w]:
             x_aux = self.position[0] + self.forward[0] * velocity
             z_aux = self.position[2] + self.forward[2] * velocity
@@ -88,6 +96,24 @@ class Camera:
 
     def get_projection_matrix(self):
         return glm.perspective(glm.radians(FOV), self.aspect_ratio, NEAR, FAR)
+
+    def play_sound(self):
+        if not self.sound_playing:
+            self.sound.play()
+            self.sound_playing = True
+
+    def stop_sound(self):
+        if self.sound_playing:
+            self.sound.stop()
+            self.sound_playing = False
+
+    # def sound_player(self):
+    #     if not self.sound_playing:
+    #         self.sound.play()
+    #         self.sound_playing = True
+    #     else:
+    #         self.sound.stop()
+    #         self.sound_playing = False
 
 
 
