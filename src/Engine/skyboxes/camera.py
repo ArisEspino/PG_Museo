@@ -1,5 +1,6 @@
 import glm
 import pygame as pg
+from collisions import Collisions
 
 FOV = 50  # deg
 NEAR = 0.1
@@ -23,6 +24,11 @@ class Camera:
         self.m_view = self.get_view_matrix()
         # projection matrix
         self.m_proj = self.get_projection_matrix()
+        #collisions
+        self.x = 0
+        self.z = 0
+        self.collisions = Collisions(self)
+
 
     def rotate(self):
         rel_x, rel_y = pg.mouse.get_rel()
@@ -51,25 +57,29 @@ class Camera:
         if keys[pg.K_w]:
             x_aux = self.position[0] + self.forward[0] * velocity
             z_aux = self.position[2] + self.forward[2] * velocity
-            if self.limit[0] > z_aux > self.limit[1] and self.limit[0] > x_aux > self.limit[1]:
+            bool_collisions = self.collisions.check_limits()
+            if self.limit[0] > z_aux > self.limit[1] and self.limit[0] > x_aux > self.limit[1] and bool_collisions:
                 self.position[0] = x_aux
                 self.position[2] = z_aux
         if keys[pg.K_s]:
             x_aux = self.position[0] - self.forward[0] * velocity
             z_aux = self.position[2] - self.forward[2] * velocity
-            if self.limit[0] < z_aux < self.limit[1] and self.limit[0] < x_aux < self.limit[1]:
+            bool_collisions = self.collisions.check_limits()
+            if self.limit[0] > z_aux > self.limit[1] and self.limit[0] > x_aux > self.limit[1] and bool_collisions:
                 self.position[0] = x_aux
                 self.position[2] = z_aux
         if keys[pg.K_a]:
             x_aux = self.position[0] - self.right[0] * velocity
             z_aux = self.position[2] - self.right[2] * velocity
-            if self.limit[0] < z_aux < self.limit[1] and self.limit[0] < x_aux < self.limit[1]:
+            bool_collisions = self.collisions.check_limits()
+            if self.limit[0] > z_aux > self.limit[1] and self.limit[0] > x_aux > self.limit[1] and bool_collisions:
                 self.position[0] = x_aux
                 self.position[2] = z_aux
         if keys[pg.K_d]:
             x_aux = self.position[0] + self.right[0] * velocity
             z_aux = self.position[2] + self.right[2] * velocity
-            if self.limit[0] > z_aux > self.limit[1] and self.limit[0] > x_aux > self.limit[1]:
+            bool_collisions = self.collisions.check_limits()
+            if self.limit[0] > z_aux > self.limit[1] and self.limit[0] > x_aux > self.limit[1] and bool_collisions:
                 self.position[0] = x_aux
                 self.position[2] = z_aux
         if keys[pg.K_w] or keys[pg.K_s] or keys[pg.K_a] or keys[pg.K_d]:
