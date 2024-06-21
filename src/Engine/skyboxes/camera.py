@@ -55,33 +55,33 @@ class Camera:
         velocity = SPEED * self.app.delta_time
         keys = pg.key.get_pressed()
         if keys[pg.K_w]:
-            x_aux = self.position[0] + self.forward[0] * velocity
-            z_aux = self.position[2] + self.forward[2] * velocity
+            self.x = self.position[0] + self.forward[0] * velocity
+            self.z = self.position[2] + self.forward[2] * velocity
             bool_collisions = self.collisions.check_limits()
-            if self.limit[0] > z_aux > self.limit[1] and self.limit[0] > x_aux > self.limit[1] and bool_collisions:
-                self.position[0] = x_aux
-                self.position[2] = z_aux
+            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions:
+                self.position[0] = self.x
+                self.position[2] = self.z
         if keys[pg.K_s]:
-            x_aux = self.position[0] - self.forward[0] * velocity
-            z_aux = self.position[2] - self.forward[2] * velocity
+            self.x = self.position[0] - self.forward[0] * velocity
+            self.z = self.position[2] - self.forward[2] * velocity
             bool_collisions = self.collisions.check_limits()
-            if self.limit[0] > z_aux > self.limit[1] and self.limit[0] > x_aux > self.limit[1] and bool_collisions:
-                self.position[0] = x_aux
-                self.position[2] = z_aux
+            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions:
+                self.position[0] = self.x
+                self.position[2] = self.z
         if keys[pg.K_a]:
-            x_aux = self.position[0] - self.right[0] * velocity
-            z_aux = self.position[2] - self.right[2] * velocity
+            self.x = self.position[0] - self.right[0] * velocity
+            self.z = self.position[2] - self.right[2] * velocity
             bool_collisions = self.collisions.check_limits()
-            if self.limit[0] > z_aux > self.limit[1] and self.limit[0] > x_aux > self.limit[1] and bool_collisions:
-                self.position[0] = x_aux
-                self.position[2] = z_aux
+            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions:
+                self.position[0] = self.x
+                self.position[2] = self.z
         if keys[pg.K_d]:
-            x_aux = self.position[0] + self.right[0] * velocity
-            z_aux = self.position[2] + self.right[2] * velocity
+            self.x = self.position[0] + self.right[0] * velocity
+            self.z = self.position[2] + self.right[2] * velocity
             bool_collisions = self.collisions.check_limits()
-            if self.limit[0] > z_aux > self.limit[1] and self.limit[0] > x_aux > self.limit[1] and bool_collisions:
-                self.position[0] = x_aux
-                self.position[2] = z_aux
+            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions:
+                self.position[0] = self.x
+                self.position[2] = self.z
         if keys[pg.K_w] or keys[pg.K_s] or keys[pg.K_a] or keys[pg.K_d]:
             print(self.position)
 
