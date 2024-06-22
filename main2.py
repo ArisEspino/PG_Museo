@@ -26,7 +26,7 @@ class GraphicEngine:
 
     def render(self):
         # clear framebuffer
-        self.ctx.clear(color=(0.01, 0.0, 0.1, 1))
+        self.ctx.clear(color=(0.01, 0.0, 0.1, 1)) #color de la ventana
         pg.display.flip()
 
     def run(self):
