@@ -10,14 +10,14 @@ SENSITIVITY = 0.08
 
 
 class Camera:
-    def __init__(self, app, position=(0, 0, 4), yaw=-90, pitch=0):
+    def __init__(self, app, position=(43.62, 1, 27.42), yaw=-90, pitch=0):
         self.app = app
         self.aspect_ratio = app.WIN_SIZE[0] / app.WIN_SIZE[1]
         self.position = glm.vec3(position)
         self.up = glm.vec3(0, 1, 0)
         self.right = glm.vec3(1, 0, 0)
         self.forward = glm.vec3(0, 0, -1)
-        self.limit = glm.vec2(10, -10)
+        self.limit = glm.vec2(200, -200)
         self.yaw = yaw
         self.pitch = pitch
         # view matrix

@@ -1,8 +1,8 @@
 class Collisions:
     def __init__(self, app):
         self.app = app
-        self.positions_models = ((6.57, 0.91), (-6.57, -0.91))
-        self.limits = 2
+        self.positions_models = ((20.20, 10.39), (2.92, -0.004))
+        self.limits = 0.5
     def check_limits(self):
         print(self.app.position)
         collisionFound = True

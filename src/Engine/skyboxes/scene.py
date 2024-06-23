@@ -18,14 +18,10 @@ class Scene:
         add = self.add_object
 
         # floor
-        n, s = 10, 2
+        n, s = 80, 2
         for x in range(-n, n, s):
             for z in range(-n, n, s):
                 add(Cube(app, pos=(x, -s, z)))
-
-
         # moving cube
-        #self.moving_cube = MovingCube(app, pos=(0, 6, 8), scale=(3, 3, 3), tex_id=1)
-        #add(self.moving_cube)
-
+        add(Cat(app, pos=(20, -1, -10), scale=(1, 1, 1)))
 

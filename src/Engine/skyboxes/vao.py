@@ -20,9 +20,13 @@ class VAO:
             vbo = self.vbo.vbos['cube'])
 
         # afro vao
-
+        self.vaos['cat'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['cat'])
         # shadow cat vao
-
+        self.vaos['shadow_cat'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['cat'])
 
         # skybox vao
         self.vaos['skybox'] = self.get_vao(

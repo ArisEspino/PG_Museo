@@ -96,6 +96,12 @@ class MovingCube(Cube):
         super().update()
 
 
+class Cat(ExtendedBaseModel):
+
+    def __init__(self, app, vao_name='cat', tex_id='cat',
+                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.3, 0.3, 0.3)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
 
 class SkyBox(BaseModel):
     def __init__(self, app, vao_name='skybox', tex_id='skybox',

@@ -10,7 +10,7 @@ from scene_renderer import SceneRenderer
 
 
 class GraphicsEngine:
-    def __init__(self, win_size=(500, 400)):
+    def __init__(self, win_size=(800, 400)):
         # init pygame modules
         pg.init()
         # window size
