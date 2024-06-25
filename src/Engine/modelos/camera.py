@@ -8,7 +8,6 @@ FAR = 100
 SPEED = 0.005
 SENSITIVITY = 0.08
 
-
 class Camera:
     def __init__(self, app, position=(0, 0, 4), yaw=-90, pitch=0):
         self.app = app
@@ -17,7 +16,7 @@ class Camera:
         self.up = glm.vec3(0, 1, 0)
         self.right = glm.vec3(1, 0, 0)
         self.forward = glm.vec3(0, 0, -1)
-        self.limit = glm.vec2(10, -10)
+        self.limit = glm.vec2(40, -40)
         self.positions_monument = glm.vec2(3, 2)
         self.dis = 0
 
@@ -56,15 +55,14 @@ class Camera:
     def move(self):
         velocity = SPEED * self.app.delta_time
         keys = pg.key.get_pressed()
-        if keys[pg.K_w] or keys[pg.K_s] or keys[pg.K_a] or keys[pg.K_d]:
-            self.dis = sqrt((self.positions_monument[0] - self.position[0]) ** 2 + (self.positions_monument[1] - self.position[2]) ** 2)
-            print(self.dis)
+        self.dis = sqrt((self.positions_monument[0] - self.position[0]) ** 2 + (self.positions_monument[1] - self.position[2]) ** 2)
+        print(self.dis)
+
         if self.dis < 5:
             if keys[pg.K_p]:
-                print("Hola")
-                self.sound.play()
+                self.play_sound()
         else:
-            self.sound.stop()
+            self.stop_sound()
 
         if keys[pg.K_w]:
             x_aux = self.position[0] + self.forward[0] * velocity
@@ -106,31 +104,3 @@ class Camera:
         if self.sound_playing:
             self.sound.stop()
             self.sound_playing = False
-
-    # def sound_player(self):
-    #     if not self.sound_playing:
-    #         self.sound.play()
-    #         self.sound_playing = True
-    #     else:
-    #         self.sound.stop()
-    #         self.sound_playing = False
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
