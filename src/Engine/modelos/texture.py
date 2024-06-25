@@ -8,9 +8,11 @@ class Texture:
         self.app = app
         self.ctx = app.ctx
         self.textures = {}
-        self.textures[0] = self.get_texture(path='texture/brick.jpg')
-        self.textures[1] = self.get_texture(path='texture/obsidiana.png')
-        self.textures[2] = self.get_texture(path='texture/img_2.png')
+        self.textures[0] = self.get_texture(path='texture/ss.jpg')
+        #self.textures[1] = self.get_texture(path='texture/obsidiana.png')
+        #self.textures[2] = self.get_texture(path='texture/img_2.png')
+        self.textures['modelo'] = self.get_texture(path='objects/museo/pared2.jpg')
+        self.textures['statue1'] = self.get_texture(path='objects/statue1/Statue20K_Material.1001_baseColor.jpeg')
         self.textures['skybox'] = self.get_texture_cube(dir_path='texture/skybox1/', ext='png')
         self.textures['depth_texture'] = self.get_depth_texture()
 

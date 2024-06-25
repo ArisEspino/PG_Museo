@@ -19,10 +19,25 @@ class VAO:
             program=self.program.programs['shadow_map'],
             vbo = self.vbo.vbos['cube'])
 
-        # afro vao
+        # Modelo vao
+        self.vaos['modelo'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['modelo'])
 
-        # shadow cat vao
+        # shadow Modelo vao
+        self.vaos['shadow_modelo'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['modelo'])
 
+        # Statue1 vao
+        self.vaos['statue1'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['statue1'])
+
+        # shadow Modelo vao
+        self.vaos['shadow_statue1'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['statue1'])
 
         # skybox vao
         self.vaos['skybox'] = self.get_vao(

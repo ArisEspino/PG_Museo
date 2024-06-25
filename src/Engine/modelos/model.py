@@ -95,7 +95,15 @@ class MovingCube(Cube):
         self.m_model = self.get_model_matrix()
         super().update()
 
+class Modelo(ExtendedBaseModel):
+    def __init__(self, app, vao_name='modelo', tex_id='modelo',
+                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.7, 0.7, 0.7)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
 
+class Statue1(ExtendedBaseModel):
+    def __init__(self, app, vao_name='statue1', tex_id='statue1',
+                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.2, 0.2, 0.2)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
 
 class SkyBox(BaseModel):
     def __init__(self, app, vao_name='skybox', tex_id='skybox',
