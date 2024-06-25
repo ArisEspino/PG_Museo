@@ -10,7 +10,8 @@ SENSITIVITY = 0.08
 
 
 class Camera:
-    def __init__(self, app, position=(43.62, 1, 27.42), yaw=-90, pitch=0):
+    def __init__(self, app, position=(20, 2, -10), yaw=-90, pitch=0):
+        # position before: (43.62, 1, 27.42)
         self.app = app
         self.aspect_ratio = app.WIN_SIZE[0] / app.WIN_SIZE[1]
         self.position = glm.vec3(position)
@@ -58,32 +59,33 @@ class Camera:
             self.x = self.position[0] + self.forward[0] * velocity
             self.z = self.position[2] + self.forward[2] * velocity
             bool_collisions = self.collisions.check_limits()
-            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions:
+            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and self.verify():
                 self.position[0] = self.x
                 self.position[2] = self.z
         if keys[pg.K_s]:
             self.x = self.position[0] - self.forward[0] * velocity
             self.z = self.position[2] - self.forward[2] * velocity
             bool_collisions = self.collisions.check_limits()
-            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions:
+            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and self.verify():
                 self.position[0] = self.x
                 self.position[2] = self.z
         if keys[pg.K_a]:
             self.x = self.position[0] - self.right[0] * velocity
             self.z = self.position[2] - self.right[2] * velocity
             bool_collisions = self.collisions.check_limits()
-            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions:
+            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and self.verify():
                 self.position[0] = self.x
                 self.position[2] = self.z
         if keys[pg.K_d]:
             self.x = self.position[0] + self.right[0] * velocity
             self.z = self.position[2] + self.right[2] * velocity
             bool_collisions = self.collisions.check_limits()
-            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions:
+            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and self.verify():
                 self.position[0] = self.x
                 self.position[2] = self.z
         if keys[pg.K_w] or keys[pg.K_s] or keys[pg.K_a] or keys[pg.K_d]:
             print(self.position)
+            self.verify()
 
     def get_view_matrix(self):
         return glm.lookAt(self.position, self.position + self.forward, self.up)
@@ -91,22 +93,45 @@ class Camera:
     def get_projection_matrix(self):
         return glm.perspective(glm.radians(FOV), self.aspect_ratio, NEAR, FAR)
 
+    def verify(self):
+        vertices = ([
+            [20.4, 9.29],
+            [3.72, -0.79],
+            [3.47, -19.76],
+            [20.15, -29.22],
+            [36.78, -19.48],
+            [36.94, 0.35],
+            [38.39, -0.12],
+            [38.114, -20.06],
+            [19.96, -31.10],
+            [1.74, -20.23],
+            [1.80, 0.52],
+            [19.48, 11.28]
+        ])
 
+        # Definir el punto a verificar
+        P = ([self.x, self.z])
 
+        # Función para verificar si un punto está dentro de un polígono
+        def is_point_in_polygon(point, vertices):
+            n = len(vertices)
+            inside = False
+            x, z = point
+            p1x, p1z = vertices[0]
+            for i in range(n + 1):
+                p2x, p2z = vertices[i % n]
+                if z > min(p1z, p2z):
+                    if z <= max(p1z, p2z):
+                        if x <= max(p1x, p2x):
+                            if p1z != p2z:
+                                xinters = (z - p1z) * (p2x - p1x) / (p2z - p1z) + p1x
+                            if p1x == p2x or x <= xinters:
+                                inside = not inside
+                p1x, p1z = p2x, p2z
+            return inside
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        # Verificar si el punto está dentro del hexágono en el plano 'xz'
+        if is_point_in_polygon(P, vertices):
+            return False
+        else:
+            return True

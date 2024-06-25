@@ -23,5 +23,5 @@ class Scene:
             for z in range(-n, n, s):
                 add(Cube(app, pos=(x, -s, z)))
         # moving cube
-        add(Cat(app, pos=(20, -1, -10), scale=(1, 1, 1)))
+        add(Cat(app, pos=(20, -1.4, -10), scale=(1, 1, 1)))
 

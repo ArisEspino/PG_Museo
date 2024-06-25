@@ -1,7 +1,8 @@
+import matplotlib.pyplot as plt
 class Collisions:
     def __init__(self, app):
         self.app = app
-        self.positions_models = ((20.20, 10.39), (2.92, -0.004))
+        self.positions_models = ((50.20, 80.39), (90.92, -55.004))
         self.limits = 0.5
     def check_limits(self):
         print(self.app.position)
@@ -17,6 +18,3 @@ class Collisions:
             return True
         else:
             return False
-
-
-# finished
