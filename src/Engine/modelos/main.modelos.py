@@ -34,6 +34,8 @@ class GraphicsEngine:
         self.delta_time = 0
         # light
         self.light = Light()
+        # Array models
+        self.positions_monument = []
         # camera
         self.camera = Camera(self)
         # mesh
@@ -42,8 +44,6 @@ class GraphicsEngine:
         self.scene = Scene(self)
         # renderer
         self.scene_renderer = SceneRenderer(self)
-
-
 
 
     def check_events(self):
@@ -77,33 +77,3 @@ class GraphicsEngine:
 if __name__ == '__main__':
     app = GraphicsEngine()
     app.run()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

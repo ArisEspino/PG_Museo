@@ -105,6 +105,11 @@ class Statue1(ExtendedBaseModel):
                  pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.2, 0.2, 0.2)):
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
 
+class Zeus(ExtendedBaseModel):
+    def __init__(self, app, vao_name='zeus', tex_id='zeus',
+                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(.3, .3, .3)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
 class SkyBox(BaseModel):
     def __init__(self, app, vao_name='skybox', tex_id='skybox',
                  pos=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1)):
