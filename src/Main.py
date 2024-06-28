@@ -4,7 +4,7 @@ import sys
 
 
 class GraphicEngine:
-    def __init__(self, win_size=(400, 200)):
+    def __init__(self, win_size=(600, 600)):
         pg.init()
 
         self.WIN_SIZE = win_size
@@ -26,7 +26,7 @@ class GraphicEngine:
 
     def render(self):
         # clear framebuffer
-        self.ctx.clear(color=(0.01, 0.0, 0.1, 1))
+        self.ctx.clear(color=(0.01, 0.0, 0.1, 1)) #color de la ventana
         pg.display.flip()
 
     def run(self):

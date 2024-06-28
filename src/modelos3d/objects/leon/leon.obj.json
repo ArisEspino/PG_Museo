@@ -1,0 +1,15 @@
+{
+  "created_at": "2024-06-27T11:46:30.593156",
+  "version": "0.1",
+  "mtllibs": [
+    "leon.mtl"
+  ],
+  "vertex_buffers": [
+    {
+      "material": "Loewe_O_Material_u1_v1",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 0,
+      "byte_length": 49924032
+    }
+  ]
+}
