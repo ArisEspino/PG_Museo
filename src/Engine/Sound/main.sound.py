@@ -1,7 +1,6 @@
 import pygame
 import sys
 import OpenGL.GL as gl
-import OpenGL.GLUT as glut
 import OpenGL.GLU as glu
 
 def display_menu(textures, selected_index):
@@ -13,11 +12,11 @@ def display_menu(textures, selected_index):
     for i, texture in enumerate(textures):
         gl.glPushMatrix()
         gl.glTranslatef(x_offset, y_offset, 0)
-        draw_texture(texture, 20, 20)  # Ajustar tamaño de textura
+        draw_texture(texture, 30, 30)
         if i == selected_index:
-            draw_border(20, 20)
+            draw_border(30, 30)
         gl.glPopMatrix()
-        y_offset += 84  # 64 (icon height) + 20 (spacing)
+        y_offset += 84
 
     pygame.display.flip()
 
@@ -28,21 +27,24 @@ def display_audio_list(audio_files_display, selected_index, back_texture):
     # Draw back button
     gl.glPushMatrix()
     gl.glTranslatef(5, 5, 0)
-    draw_texture(back_texture, 20, 20)  # Ajustar tamaño de textura
+    draw_texture(back_texture, 30, 30)
     gl.glPopMatrix()
 
-    font = pygame.font.Font(None, 20)  # Smaller font size for better visibility
-    y_offset = 40  # Initial y position for the text
+    font = pygame.font.Font(None, 36)
+    y_offset = 60
 
     for i, option in enumerate(audio_files_display):
-        label = font.render(option, True, (255, 255, 255), (0, 0, 0, 0))  # Fondo transparente
+        label = font.render(option, True, (255, 255, 255), (0, 0, 0))
+        label = pygame.transform.flip(label, False, True)  # Flip the surface vertically
         label_texture = create_texture(label)
         label_width, label_height = label.get_size()
         gl.glPushMatrix()
-        gl.glTranslatef(80, 120 - y_offset - label_height, 0) # Keep the original y position
+        gl.glTranslatef(80, y_offset, 0)
         draw_texture(label_texture, label_width, label_height)
+        if i == selected_index:
+            draw_border(label_width, label_height)
         gl.glPopMatrix()
-        y_offset += label_height + 10  # Adjust spacing
+        y_offset += label_height + 10
 
     pygame.display.flip()
 
@@ -62,7 +64,7 @@ def draw_texture(texture, width, height):
     gl.glDisable(gl.GL_TEXTURE_2D)
 
 def draw_border(width, height):
-    gl.glColor3f(0.0, 0.0, 0.0)  # Red color for border
+    gl.glColor3f(0.0, 0.0, 0.0)  # Black color for border
     gl.glBegin(gl.GL_LINE_LOOP)
     gl.glVertex2f(0.0, 0.0)
     gl.glVertex2f(width, 0.0)
@@ -82,11 +84,8 @@ def create_texture(surface):
     return texture
 
 def play_audio(file_path):
-    pygame.mixer.music.stop()
-    if not pygame.mixer.get_init():
-        pygame.mixer.init()
     pygame.mixer.music.load(file_path)
-    pygame.mixer.music.play(-1)
+    pygame.mixer.music.play()
 
 def main():
     pygame.init()
@@ -96,7 +95,7 @@ def main():
     gl.glClearColor(0.0, 0.0, 0.0, 0.0)
     gl.glMatrixMode(gl.GL_PROJECTION)
     gl.glLoadIdentity()
-    glu.gluOrtho2D(0, 400, 300, 0)  # Adjusted the projection to match Pygame's coordinate system
+    glu.gluOrtho2D(0, 800, 600, 0)
     gl.glMatrixMode(gl.GL_MODELVIEW)
     gl.glLoadIdentity()
 
@@ -109,15 +108,15 @@ def main():
     in_main_menu = True
 
     audio_files = [
-        "Beethoven  - Silencio (320).mp3",
-        "Beethoven - Für Elise (320).mp3",
-        "Vivaldi_SoundBackground.mp3"
+        "Hijo De La Luna.mp3",
+        "Sparkle - Your Name.mp3",
+        "Mariage d'Amour.mp3"
     ]
 
     audio_files_display = [
-        "Silencio",
-        "Fur Elise",
-        "Vivaldi"
+        "Hijo De La Luna",
+        "Your Name",
+        "Mariage d'Amour"
     ]
 
     play_audio(audio_files[selected_index])
@@ -137,29 +136,34 @@ def main():
                 if event.button == 1:
                     mouse_pos = event.pos
                     if in_main_menu:
-                        y_offset = 10
+                        y_offset = 5
                         for i, icon in enumerate(icons):
-                            rect = pygame.Rect(10, y_offset, 64, 64)
+                            rect = pygame.Rect(5, y_offset, 30, 30)
                             if rect.collidepoint(mouse_pos):
                                 in_main_menu = False
                                 selected_index = 0
                                 break
                             y_offset += 84
                     else:
-                        back_rect = pygame.Rect(10, 10, 64, 64)
+                        back_rect = pygame.Rect(5, 5, 30, 30)
                         if back_rect.collidepoint(mouse_pos):
                             in_main_menu = True
                             selected_index = 0
                         else:
-                            y_offset = 50
+                            y_offset = 60
                             for i in range(len(audio_files_display)):
-                                rect = pygame.Rect(50, y_offset, 300, 40)
+                                label = pygame.font.Font(None, 36).render(audio_files_display[i], True, (255, 255, 255), (0, 0, 0))
+                                label_width, label_height = label.get_size()
+                                rect = pygame.Rect(80, y_offset, label_width, label_height)
                                 if rect.collidepoint(mouse_pos):
-                                    pygame.mixer.music.fadeout(500)
                                     play_audio(audio_files[i])
                                     selected_index = i
                                     break
-                                y_offset += 40
+                                y_offset += label_height + 10
+
+        if pygame.mixer.music.get_busy() == 0:  # Si la música ha terminado de reproducirse
+            selected_index = (selected_index + 1) % len(audio_files_display)  # Avanza al siguiente índice circularmente
+            play_audio(audio_files[selected_index])
 
         pygame.time.Clock().tick(10)
 
