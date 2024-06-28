@@ -4,7 +4,6 @@ class SceneRenderer:
         self.ctx = app.ctx
         self.mesh = app.mesh
         self.scene = app.scene
-        # depth buffer
         self.depth_texture = self.mesh.texture.textures['depth_texture']
         self.depth_fbo = self.ctx.framebuffer(depth_attachment=self.depth_texture)
 
@@ -22,9 +21,7 @@ class SceneRenderer:
 
     def render(self):
 
-        # pass 1
         self.render_shadow()
-        # pass 2
         self.main_render()
 
     def destroy(self):

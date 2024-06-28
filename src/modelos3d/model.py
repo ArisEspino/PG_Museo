@@ -108,13 +108,107 @@ class Fuente(ExtendedBaseModel):      #modelo de la estatua
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
 
 #mesa
-class Mesa(ExtendedBaseModel):      #modelo de la estatua
+class Mesa(ExtendedBaseModel):
     def __init__(self, app, vao_name='mesa', tex_id='mesa',
-                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1)): #cambiar la escala del obj
+                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.6, 0.6, 0.6)): #cambiar la escala del obj
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+#modelo de contenido de mesa face 1
+class Face1(ExtendedBaseModel):
+    def __init__(self, app, vao_name='cara', tex_id='cara',
+                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.04, 0.04, 0.04)): #cambiar la escala del obj
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
 
 
- #ahora para los raboles
+#modelo cara2
+class Face2(ExtendedBaseModel):
+    def __init__(self, app, vao_name='face', tex_id='face',
+                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.03, 0.03, 0.03)):  # cambiar la escala del obj
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+
+#choza modelo
+class Choza(ExtendedBaseModel):
+    def __init__(self, app, vao_name='choza', tex_id='choza',
+                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.9, 0.9, 0.9)):  # cambiar la escala del obj
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+
+
+
+#herkules
+class Her(ExtendedBaseModel):
+    def __init__(self, app, vao_name='her', tex_id='her',
+                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.1, 0.1, 0.1)):  # cambiar la escala del obj
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+
+#mujer
+class Mujer(ExtendedBaseModel):
+    def __init__(self, app, vao_name='mujer', tex_id='mujer',
+                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.03, 0.03, 0.03)):  # cambiar la escala del obj
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+
+#CABEZA soldado
+class Sol(ExtendedBaseModel):
+    def __init__(self, app, vao_name='sol', tex_id='sol',
+                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.1, 0.1, 0.1)):  # cambiar la escala del obj
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+
+#cabeza2
+class Cab(ExtendedBaseModel):
+    def __init__(self, app, vao_name='cab', tex_id='cab',
+                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.03, 0.03, 0.03)):  # cambiar la escala del obj
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+
+
+
+
+#leon 1/8
+class Leon(ExtendedBaseModel):
+    def __init__(self, app, vao_name='leon', tex_id='leon',
+                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.3, 0.3, 0.3)):  # cambiar la escala del obj
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+#m1mu
+class M1(ExtendedBaseModel):
+    def __init__(self, app, vao_name='m1', tex_id='m1',
+                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.09, 0.09, 0.09)):  # cambiar la escala del obj
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+#m2sol
+class M2(ExtendedBaseModel):
+    def __init__(self, app, vao_name='m2', tex_id='m2',
+                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.09, 0.09, 0.09)):  # cambiar la escala del obj
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+#m3di
+class M3(ExtendedBaseModel):
+    def __init__(self, app, vao_name='m3', tex_id='m3',
+                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.05, 0.05, 0.05)):  # cambiar la escala del obj
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+
+#m4c
+class M4(ExtendedBaseModel):
+    def __init__(self, app, vao_name='m4', tex_id='m4',
+                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.09, 0.09, 0.09)):  # cambiar la escala del obj
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+
+#m5c
+
+class M5(ExtendedBaseModel):
+    def __init__(self, app, vao_name='m5', tex_id='m5',
+                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.04, 0.04, 0.04)):  # cambiar la escala del obj
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+
+
+#ahora para los arboles
 class Tree(ExtendedBaseModel):  # modelo de la estatua
     def __init__(self, app, vao_name='tree', tex_id='tree',
                  pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.4, 0.4, 0.4)):  # cambiar la escala del obj

@@ -1,7 +1,8 @@
 import glm
 import pygame as pg
 
-FOV = 50  # deg
+#declaraciones
+FOV = 50
 NEAR = 0.1
 FAR = 200
 SPEED = 0.005
@@ -18,9 +19,9 @@ class Camera:
         self.forward = glm.vec3(0, 0, -1)
         self.yaw = yaw
         self.pitch = pitch
-        # view matrix
+        # matriz vista
         self.m_view = self.get_view_matrix()
-        # projection matrix
+        # matriz proyeccion
         self.m_proj = self.get_projection_matrix()
 
     def rotate(self):
@@ -31,21 +32,18 @@ class Camera:
 
     def update_camera_vectors(self):
         yaw, pitch = glm.radians(self.yaw), glm.radians(self.pitch)
-
         self.forward.x = glm.cos(yaw) * glm.cos(pitch)
         self.forward.y = glm.sin(pitch)
         self.forward.z = glm.sin(yaw) * glm.cos(pitch)
-
         self.forward = glm.normalize(self.forward)
         self.right = glm.normalize(glm.cross(self.forward, glm.vec3(0, 1, 0)))
         self.up = glm.normalize(glm.cross(self.right, self.forward))
-
     def update(self):
         self.move()
         self.rotate()
         self.update_camera_vectors()
         self.m_view = self.get_view_matrix()
-
+    #more forms
     def move(self):
         velocity = SPEED * self.app.delta_time
         keys = pg.key.get_pressed()
@@ -61,10 +59,8 @@ class Camera:
             self.position += self.up * velocity
         if keys[pg.K_e]:
             self.position -= self.up * velocity
-
     def get_view_matrix(self):
         return glm.lookAt(self.position, self.position + self.forward, self.up)
-
     def get_projection_matrix(self):
         return glm.perspective(glm.radians(FOV), self.aspect_ratio, NEAR, FAR)
 
