@@ -22,8 +22,7 @@ class Scene:
         for x in range(-n, n, s):
             for z in range(-n, n, s):
                 add(Cube(app, pos=(x, -s, z)))
-
-#aca se edita la pos donde estara el obj
+        #aca se edita la pos donde estara el obj
         add(Cat(app, pos=(0, -1, -10)))
         add(Fuente(app, pos=(-5, -1, -4)))
         add(Mesa(app, pos=(0.1, -1, -15))) #esta es de las mesas
@@ -60,6 +59,4 @@ class Scene:
         add(Choza(app, pos=(-9, -1, -6)))#chozaa
         add(Choza(app, pos=(9.8, -1, -6)))  # chozaa
 
-
         #x,y,z
-

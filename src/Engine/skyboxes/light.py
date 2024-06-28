@@ -8,7 +8,7 @@ class Light:
         self.direction = glm.vec3(0, 0, 0)
         # intensities
         self.Ia = 0.09 * self.color  # ambient
-        self.Id = 0.8 * self.color  # diffuse
+        self.Id = 0.2 * self.color  # diffuse
         self.Is = 1.0 * self.color  # specular
         # view matrix
         self.m_view_light = self.get_view_matrix()
