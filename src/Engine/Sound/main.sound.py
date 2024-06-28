@@ -1,171 +1,175 @@
-import pygame
+import pygame as pg
 import sys
-import OpenGL.GL as gl
-import OpenGL.GLU as glu
+from OpenGL.GL import *
+from OpenGL.GLU import *
 
-def display_menu(textures, selected_index):
-    gl.glClear(gl.GL_COLOR_BUFFER_BIT | gl.GL_DEPTH_BUFFER_BIT)
-    gl.glLoadIdentity()
+class GraphicsEngine:
+    def __init__(self, win_size=(600, 400)):
+        pg.init()
+        self.screen = pg.display.set_mode(win_size, pg.OPENGL | pg.DOUBLEBUF)
+        pg.display.set_caption('Menú Principal')
 
-    y_offset = 5
-    x_offset = 5
-    for i, texture in enumerate(textures):
-        gl.glPushMatrix()
-        gl.glTranslatef(x_offset, y_offset, 0)
-        draw_texture(texture, 30, 30)
-        if i == selected_index:
-            draw_border(30, 30)
-        gl.glPopMatrix()
-        y_offset += 84
+        self.init_opengl()
+        self.icon_surface = pg.image.load("sound.png")
+        self.back_icon_surface = pg.image.load("flecha1.png")
+        self.icons = [self.create_texture(self.icon_surface)]
+        self.back_texture = self.create_texture(self.back_icon_surface)
 
-    pygame.display.flip()
+        self.selected_index = 0
+        self.in_main_menu = True
 
-def display_audio_list(audio_files_display, selected_index, back_texture):
-    gl.glClear(gl.GL_COLOR_BUFFER_BIT | gl.GL_DEPTH_BUFFER_BIT)
-    gl.glLoadIdentity()
+        self.audio_files = [
+            "Hijo De La Luna.mp3",
+            "Sparkle - Your Name.mp3",
+            "Mariage d'Amour.mp3"
+        ]
 
-    # Draw back button
-    gl.glPushMatrix()
-    gl.glTranslatef(5, 5, 0)
-    draw_texture(back_texture, 30, 30)
-    gl.glPopMatrix()
+        self.audio_files_display = [
+            "Hijo De La Luna",
+            "Your Name",
+            "Mariage d'Amour"
+        ]
 
-    font = pygame.font.Font(None, 36)
-    y_offset = 60
+        self.play_audio(self.audio_files[self.selected_index])
 
-    for i, option in enumerate(audio_files_display):
-        label = font.render(option, True, (255, 255, 255), (0, 0, 0))
-        label = pygame.transform.flip(label, False, True)  # Flip the surface vertically
-        label_texture = create_texture(label)
-        label_width, label_height = label.get_size()
-        gl.glPushMatrix()
-        gl.glTranslatef(80, y_offset, 0)
-        draw_texture(label_texture, label_width, label_height)
-        if i == selected_index:
-            draw_border(label_width, label_height)
-        gl.glPopMatrix()
-        y_offset += label_height + 10
+    def init_opengl(self):
+        glClearColor(0.0, 0.0, 0.0, 0.0)
+        glMatrixMode(GL_PROJECTION)
+        glLoadIdentity()
+        gluOrtho2D(0, 800, 600, 0)
+        glMatrixMode(GL_MODELVIEW)
+        glLoadIdentity()
 
-    pygame.display.flip()
+    def display_menu(self):
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+        glLoadIdentity()
 
-def draw_texture(texture, width, height):
-    gl.glEnable(gl.GL_TEXTURE_2D)
-    gl.glBindTexture(gl.GL_TEXTURE_2D, texture)
-    gl.glBegin(gl.GL_QUADS)
-    gl.glTexCoord2f(0.0, 0.0)
-    gl.glVertex2f(0.0, 0.0)
-    gl.glTexCoord2f(1.0, 0.0)
-    gl.glVertex2f(width, 0.0)
-    gl.glTexCoord2f(1.0, 1.0)
-    gl.glVertex2f(width, height)
-    gl.glTexCoord2f(0.0, 1.0)
-    gl.glVertex2f(0.0, height)
-    gl.glEnd()
-    gl.glDisable(gl.GL_TEXTURE_2D)
+        y_offset = 5
+        x_offset = 5
+        for i, texture in enumerate(self.icons):
+            glPushMatrix()
+            glTranslatef(x_offset, y_offset, 0)
+            self.draw_texture(texture, 30, 30)
+            if i == self.selected_index:
+                self.draw_border(30, 30)
+            glPopMatrix()
+            y_offset += 84
 
-def draw_border(width, height):
-    gl.glColor3f(0.0, 0.0, 0.0)  # Black color for border
-    gl.glBegin(gl.GL_LINE_LOOP)
-    gl.glVertex2f(0.0, 0.0)
-    gl.glVertex2f(width, 0.0)
-    gl.glVertex2f(width, height)
-    gl.glVertex2f(0.0, height)
-    gl.glEnd()
-    gl.glColor3f(1.0, 1.0, 1.0)  # Reset color to white
+        pg.display.flip()
 
-def create_texture(surface):
-    texture_data = pygame.image.tostring(surface, "RGBA", True)
-    width, height = surface.get_size()
-    texture = gl.glGenTextures(1)
-    gl.glBindTexture(gl.GL_TEXTURE_2D, texture)
-    gl.glTexParameteri(gl.GL_TEXTURE_2D, gl.GL_TEXTURE_MIN_FILTER, gl.GL_LINEAR)
-    gl.glTexParameteri(gl.GL_TEXTURE_2D, gl.GL_TEXTURE_MAG_FILTER, gl.GL_LINEAR)
-    gl.glTexImage2D(gl.GL_TEXTURE_2D, 0, gl.GL_RGBA, width, height, 0, gl.GL_RGBA, gl.GL_UNSIGNED_BYTE, texture_data)
-    return texture
+    def display_audio_list(self):
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+        glLoadIdentity()
 
-def play_audio(file_path):
-    pygame.mixer.music.load(file_path)
-    pygame.mixer.music.play()
+        glPushMatrix()
+        glTranslatef(5, 5, 0)
+        self.draw_texture(self.back_texture, 30, 30)
+        glPopMatrix()
 
-def main():
-    pygame.init()
-    screen = pygame.display.set_mode((800, 600), pygame.OPENGL | pygame.DOUBLEBUF)
-    pygame.display.set_caption('Menú Principal')
+        font = pg.font.Font(None, 36)
+        y_offset = 60
 
-    gl.glClearColor(0.0, 0.0, 0.0, 0.0)
-    gl.glMatrixMode(gl.GL_PROJECTION)
-    gl.glLoadIdentity()
-    glu.gluOrtho2D(0, 800, 600, 0)
-    gl.glMatrixMode(gl.GL_MODELVIEW)
-    gl.glLoadIdentity()
+        for i, option in enumerate(self.audio_files_display):
+            label = font.render(option, True, (255, 255, 255), (0, 0, 0))
+            label = pg.transform.flip(label, False, True)
+            label_texture = self.create_texture(label)
+            label_width, label_height = label.get_size()
+            glPushMatrix()
+            glTranslatef(80, y_offset, 0)
+            self.draw_texture(label_texture, label_width, label_height)
+            if i == self.selected_index:
+                self.draw_border(label_width, label_height)
+            glPopMatrix()
+            y_offset += label_height + 10
 
-    icon_surface = pygame.image.load("sound.png")
-    back_icon_surface = pygame.image.load("flecha1.png")
-    icons = [create_texture(icon_surface)]
-    back_texture = create_texture(back_icon_surface)
+        pg.display.flip()
 
-    selected_index = 0
-    in_main_menu = True
+    def draw_texture(self, texture, width, height):
+        glEnable(GL_TEXTURE_2D)
+        glBindTexture(GL_TEXTURE_2D, texture)
+        glBegin(GL_QUADS)
+        glTexCoord2f(0.0, 0.0)
+        glVertex2f(0.0, 0.0)
+        glTexCoord2f(1.0, 0.0)
+        glVertex2f(width, 0.0)
+        glTexCoord2f(1.0, 1.0)
+        glVertex2f(width, height)
+        glTexCoord2f(0.0, 1.0)
+        glVertex2f(0.0, height)
+        glEnd()
+        glDisable(GL_TEXTURE_2D)
 
-    audio_files = [
-        "Hijo De La Luna.mp3",
-        "Sparkle - Your Name.mp3",
-        "Mariage d'Amour.mp3"
-    ]
+    def draw_border(self, width, height):
+        glColor3f(0.0, 0.0, 0.0)
+        glBegin(GL_LINE_LOOP)
+        glVertex2f(0.0, 0.0)
+        glVertex2f(width, 0.0)
+        glVertex2f(width, height)
+        glVertex2f(0.0, height)
+        glEnd()
+        glColor3f(1.0, 1.0, 1.0)
 
-    audio_files_display = [
-        "Hijo De La Luna",
-        "Your Name",
-        "Mariage d'Amour"
-    ]
+    def create_texture(self, surface):
+        texture_data = pg.image.tostring(surface, "RGBA", True)
+        width, height = surface.get_size()
+        texture = glGenTextures(1)
+        glBindTexture(GL_TEXTURE_2D, texture)
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, texture_data)
+        return texture
 
-    play_audio(audio_files[selected_index])
+    def play_audio(self, file_path):
+        pg.mixer.music.load(file_path)
+        pg.mixer.music.play()
 
-    while True:
-        if in_main_menu:
-            display_menu(icons, selected_index)
-        else:
-            display_audio_list(audio_files_display, selected_index, back_texture)
+    def run(self):
+        while True:
+            if self.in_main_menu:
+                self.display_menu()
+            else:
+                self.display_audio_list()
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    pg.quit()
+                    sys.exit()
 
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == 1:
-                    mouse_pos = event.pos
-                    if in_main_menu:
-                        y_offset = 5
-                        for i, icon in enumerate(icons):
-                            rect = pygame.Rect(5, y_offset, 30, 30)
-                            if rect.collidepoint(mouse_pos):
-                                in_main_menu = False
-                                selected_index = 0
-                                break
-                            y_offset += 84
-                    else:
-                        back_rect = pygame.Rect(5, 5, 30, 30)
-                        if back_rect.collidepoint(mouse_pos):
-                            in_main_menu = True
-                            selected_index = 0
-                        else:
-                            y_offset = 60
-                            for i in range(len(audio_files_display)):
-                                label = pygame.font.Font(None, 36).render(audio_files_display[i], True, (255, 255, 255), (0, 0, 0))
-                                label_width, label_height = label.get_size()
-                                rect = pygame.Rect(80, y_offset, label_width, label_height)
+                elif event.type == pg.MOUSEBUTTONDOWN:
+                    if event.button == 1:
+                        mouse_pos = event.pos
+                        if self.in_main_menu:
+                            y_offset = 5
+                            for i in range(len(self.icons)):
+                                rect = pg.Rect(5, y_offset, 30, 30)
                                 if rect.collidepoint(mouse_pos):
-                                    play_audio(audio_files[i])
-                                    selected_index = i
+                                    self.in_main_menu = False
+                                    self.selected_index = 0
                                     break
-                                y_offset += label_height + 10
+                                y_offset += 84
+                        else:
+                            back_rect = pg.Rect(5, 5, 30, 30)
+                            if back_rect.collidepoint(mouse_pos):
+                                self.in_main_menu = True
+                                self.selected_index = 0
+                            else:
+                                y_offset = 60
+                                for i in range(len(self.audio_files_display)):
+                                    label = pg.font.Font(None, 36).render(self.audio_files_display[i], True, (255, 255, 255), (0, 0, 0))
+                                    label_width, label_height = label.get_size()
+                                    rect = pg.Rect(80, y_offset, label_width, label_height)
+                                    if rect.collidepoint(mouse_pos):
+                                        self.play_audio(self.audio_files[i])
+                                        self.selected_index = i
+                                        break
+                                    y_offset += label_height + 10
 
-        if pygame.mixer.music.get_busy() == 0:  # Si la música ha terminado de reproducirse
-            selected_index = (selected_index + 1) % len(audio_files_display)  # Avanza al siguiente índice circularmente
-            play_audio(audio_files[selected_index])
+            if pg.mixer.music.get_busy() == 0:
+                self.selected_index = (self.selected_index + 1) % len(self.audio_files_display)
+                self.play_audio(self.audio_files[self.selected_index])
 
-        pygame.time.Clock().tick(10)
+            pg.time.Clock().tick(10)
 
 if __name__ == "__main__":
-    main()
+    app = GraphicsEngine()
+    app.run()
