@@ -13,6 +13,16 @@ class Texture:
         #la textura del museo
         self.textures['cat'] = self.get_texture(path='objects/gallery/otra.png')
         self.textures['head'] = self.get_texture(path='objects/head/head.jpeg')
+        self.textures['mesa'] = self.get_texture(path='objects/mesa/mesa.png')
+        self.textures['herku'] = self.get_texture(path='objects/herkules/herkules.jpeg')
+        self.textures['woman'] = self.get_texture(path='objects/woman/woman.jpeg')
+        self.textures['man'] = self.get_texture(path='objects/man/man.jpeg')
+        self.textures['jarra'] = self.get_texture(path='objects/jarra/jarra.jpeg')
+        self.textures['plato'] = self.get_texture(path='objects/plato/plato.jpeg')
+        self.textures['orar'] = self.get_texture(path='objects/orar/orando.jpeg')
+        self.textures['mujer'] = self.get_texture(path='objects/mujer/mujer.png')
+        self.textures['ate'] = self.get_texture(path='objects/atenea/atenea.jpeg')
+        self.textures['zeus'] = self.get_texture(path='objects/zeus/zeus.png')
         self.textures['skybox'] = self.get_texture_cube(dir_path='textures/skybox1/', ext='png')
         self.textures['depth_texture'] = self.get_depth_texture()
 

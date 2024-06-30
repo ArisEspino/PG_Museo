@@ -100,9 +100,75 @@ class Cat(ExtendedBaseModel): #este es el museo
                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.6, 0.6, 0.6)):
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
 #head
-class Head(ExtendedBaseModel): #este es el museo
+class Head(ExtendedBaseModel):
     def __init__(self, app, vao_name='head', tex_id='head',
                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.02, 0.02, 0.02)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+#mesa
+class Mesa(ExtendedBaseModel):
+    def __init__(self, app, vao_name='mesa', tex_id='mesa',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.3, 0.3, 0.3)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+#herkules
+class Herku(ExtendedBaseModel):
+    def __init__(self, app, vao_name='herku', tex_id='herku',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(3.2, 3.2, 3.2)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+#woman
+class Woman(ExtendedBaseModel):
+    def __init__(self, app, vao_name='woman', tex_id='woman',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.1, 0.1, 0.1)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+#man
+class Man(ExtendedBaseModel):
+    def __init__(self, app, vao_name='man', tex_id='man',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(1.2, 1.2, 1.2)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+
+#jarra
+class Jarra(ExtendedBaseModel):
+    def __init__(self, app, vao_name='jarra', tex_id='jarra',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.4, 0.4, 0.4)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+#plato
+class Plato(ExtendedBaseModel):
+    def __init__(self, app, vao_name='plato', tex_id='plato',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.007, 0.007, 0.007)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+#orando
+
+class Orar(ExtendedBaseModel):
+    def __init__(self, app, vao_name='orar', tex_id='orar',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.2, 0.2, 0.2)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+
+#mujer
+class Mujer(ExtendedBaseModel):
+    def __init__(self, app, vao_name='mujer', tex_id='mujer',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.001, 0.001, 0.001)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+
+
+
+#atenea
+class Ate(ExtendedBaseModel):
+    def __init__(self, app, vao_name='ate', tex_id='ate',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.001, 0.001, 0.001)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+#zeus
+class Zeus(ExtendedBaseModel):
+    def __init__(self, app, vao_name='zeus', tex_id='zeus',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.1, 0.1, 0.1)):
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
 
 class SkyBox(BaseModel):
