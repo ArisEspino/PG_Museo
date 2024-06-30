@@ -11,7 +11,7 @@ class Texture:
         self.textures = {}
         self.textures[0] = self.get_texture(path='textures/ss.jpg')
         #la textura del museo
-        self.textures['cat'] = self.get_texture(path='objects/pared2.jpg')
+        self.textures['cat'] = self.get_texture(path='objects/museo_op.jpeg')
         self.textures['fuente'] = self.get_texture(path='objects/fuente/Root_baseColor.png')
         self.textures['mesa'] = self.get_texture(path='objects/table/lambert1_baseColor.png')
         self.textures['cara'] = self.get_texture(path='objects/cara1/Material_0_baseColor.jpeg')

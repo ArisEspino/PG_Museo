@@ -60,28 +60,28 @@ class Camera:
             self.x = self.position[0] + self.forward[0] * velocity
             self.z = self.position[2] + self.forward[2] * velocity
             bool_collisions = self.collisions.check_limits()
-            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions:
+            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions and self.verify():
                 self.position[0] = self.x
                 self.position[2] = self.z
         if keys[pg.K_s]:
             self.x = self.position[0] - self.forward[0] * velocity
             self.z = self.position[2] - self.forward[2] * velocity
             bool_collisions = self.collisions.check_limits()
-            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions:
+            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions and self.verify():
                 self.position[0] = self.x
                 self.position[2] = self.z
         if keys[pg.K_a]:
             self.x = self.position[0] - self.right[0] * velocity
             self.z = self.position[2] - self.right[2] * velocity
             bool_collisions = self.collisions.check_limits()
-            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions:
+            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions and self.verify():
                 self.position[0] = self.x
                 self.position[2] = self.z
         if keys[pg.K_d]:
             self.x = self.position[0] + self.right[0] * velocity
             self.z = self.position[2] + self.right[2] * velocity
             bool_collisions = self.collisions.check_limits()
-            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions:
+            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions and self.verify():
                 self.position[0] = self.x
                 self.position[2] = self.z
         if keys[pg.K_w] or keys[pg.K_s] or keys[pg.K_a] or keys[pg.K_d]:
@@ -96,7 +96,18 @@ class Camera:
 
     def verify(self):
         vertices = ([
-            [20.4, 9.29],
+            [0.11, -4.28],
+            [-4.98, -7.18],
+            [-4.89, -12.82],
+            [0.06, -15.56],
+            [4.94, -12.71],
+            [4.89, -6.82],
+            [5.63, -7.02],
+            [5.48, -13.13],
+            [-0.08, -16.27],
+            [-5.40, -13.22],
+            [-5.42, -6.83],
+            [-0.13, -3.71]
         ])
 
         # Definir el punto a verificar
