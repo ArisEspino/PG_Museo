@@ -4,6 +4,7 @@ from colisions import Collisions
 from colisions import Collisions_two
 
 
+
 FOV = 50  # deg
 NEAR = 0.1
 FAR = 100
@@ -12,7 +13,7 @@ SENSITIVITY = 0.06
 
 
 class Camera:
-    def __init__(self, app, position=(4.86, 0, 3.17), yaw=-90, pitch=0):
+    def __init__(self, app, position=(0.50, 0, 7.41), yaw=-90, pitch=0):
         # position before: (43.62, 1, 27.42)
         self.app = app
         self.aspect_ratio = app.WIN_SIZE[0] / app.WIN_SIZE[1]
@@ -20,7 +21,7 @@ class Camera:
         self.up = glm.vec3(0, 1, 0)
         self.right = glm.vec3(1, 0, 0)
         self.forward = glm.vec3(0, 0, -1)
-        self.limit = glm.vec2(15, -15)
+        self.limit = glm.vec2(20, -20)
         self.yaw = yaw
         self.pitch = pitch
         # view matrix
@@ -31,6 +32,7 @@ class Camera:
         self.x = 0
         self.z = 0
         self.collisions = Collisions(self)
+        self.collisions_two = Collisions_two(self)
     def rotate(self):
         rel_x, rel_y = pg.mouse.get_rel()
         self.yaw += rel_x * SENSITIVITY
@@ -59,28 +61,32 @@ class Camera:
             self.x = self.position[0] + self.forward[0] * velocity
             self.z = self.position[2] + self.forward[2] * velocity
             bool_collisions = self.collisions.check_limits()
-            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions and self.verify():
+            bool_collisions_two = self.collisions_two.check_limits()
+            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions and bool_collisions_two:
                 self.position[0] = self.x
                 self.position[2] = self.z
         if keys[pg.K_s]:
             self.x = self.position[0] - self.forward[0] * velocity
             self.z = self.position[2] - self.forward[2] * velocity
             bool_collisions = self.collisions.check_limits()
-            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions and self.verify():
+            bool_collisions_two = self.collisions_two.check_limits()
+            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions and bool_collisions_two:
                 self.position[0] = self.x
                 self.position[2] = self.z
         if keys[pg.K_a]:
             self.x = self.position[0] - self.right[0] * velocity
             self.z = self.position[2] - self.right[2] * velocity
             bool_collisions = self.collisions.check_limits()
-            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions and self.verify():
+            bool_collisions_two = self.collisions_two.check_limits()
+            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions and bool_collisions_two:
                 self.position[0] = self.x
                 self.position[2] = self.z
         if keys[pg.K_d]:
             self.x = self.position[0] + self.right[0] * velocity
             self.z = self.position[2] + self.right[2] * velocity
             bool_collisions = self.collisions.check_limits()
-            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions and self.verify():
+            bool_collisions_two = self.collisions_two.check_limits()
+            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions and bool_collisions_two:
                 self.position[0] = self.x
                 self.position[2] = self.z
         if keys[pg.K_w] or keys[pg.K_s] or keys[pg.K_a] or keys[pg.K_d]:

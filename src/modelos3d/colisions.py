@@ -2,10 +2,8 @@ import matplotlib.pyplot as plt
 class Collisions:
     def __init__(self, app):
         self.app = app
-        self.positions_models = ((-6.5, -6.4), (-8.4, -10.4), (-11.4, -10.4), (-9.9, -5.9), (-13.4, -6.4), (8.5, -6.3), (6.5, -10.3), (10.5, -10.3), (13.5, -11.3),
-                                 (12.5, -6.3), (-1.95, -6.08), (-4.55, -8.52), (-4.45, -10.55), (-0.95, -9.46),
-                                 (2.04, -10.00), (1.79, -13.90), (-2.03, -14.01), (4.03, -10.02))
-        self.limits = 0.2
+        self.positions_models = ((0.10, -5.01), (-8.4, -10.4))
+        self.limits = 1.4
     def check_limits(self):
         print(self.app.position)
         collisionFound = True
@@ -24,7 +22,8 @@ class Collisions:
 class Collisions_two:
     def __init__(self, app):
         self.app = app
-        self.positions_models = ((-1.95, -6.08), (0, 0))
+        self.positions_models = ((-2.32, -2.43), (-2.47, -4.46),
+                                 (-2.40, -7.52), (-0.05, -7.54), (2.44, -7.54), (2.46, -4.51), (2.52, -2.55))
         self.limits = 0.2
     def check_limits(self):
         print(self.app.position)
