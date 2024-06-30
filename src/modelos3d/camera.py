@@ -1,6 +1,7 @@
 import glm
 import pygame as pg
 from colisions import Collisions
+from colisions import Collisions_two
 
 
 FOV = 50  # deg
@@ -30,8 +31,6 @@ class Camera:
         self.x = 0
         self.z = 0
         self.collisions = Collisions(self)
-
-
     def rotate(self):
         rel_x, rel_y = pg.mouse.get_rel()
         self.yaw += rel_x * SENSITIVITY
