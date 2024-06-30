@@ -12,9 +12,9 @@ class GraphicsEngine:
 
         # Lista de nombres de archivo de música
         self.music_files = [
-            "Hijo De La Luna.mp3",
-            "Sparkle - Your Name.mp3",
-            "Mariage d'Amour.mp3"
+            "music/Hijo De La Luna.mp3",
+            "music/Mariage d Amour.mp3",
+            "music/Sparkle - Your Name.mp3"
         ]
 
         # Variables para control de reproducción de música
