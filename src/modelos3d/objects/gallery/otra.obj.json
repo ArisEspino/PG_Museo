@@ -1,0 +1,15 @@
+{
+  "created_at": "2024-06-29T10:43:44.637048",
+  "version": "0.1",
+  "mtllibs": [
+    "otra.mtl"
+  ],
+  "vertex_buffers": [
+    {
+      "material": "VR_Gallery",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 0,
+      "byte_length": 185280
+    }
+  ]
+}
