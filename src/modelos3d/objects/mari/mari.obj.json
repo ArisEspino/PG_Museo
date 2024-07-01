@@ -1,0 +1,21 @@
+{
+  "created_at": "2024-06-30T23:55:19.763374",
+  "version": "0.1",
+  "mtllibs": [
+    "mari.mtl"
+  ],
+  "vertex_buffers": [
+    {
+      "material": "Material_56",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 0,
+      "byte_length": 3758208
+    },
+    {
+      "material": "Material_59",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 3758208,
+      "byte_length": 110592
+    }
+  ]
+}

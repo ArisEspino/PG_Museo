@@ -42,7 +42,12 @@ class Scene:
         add(Wall(app, pos=(0, -1, 5)))
         add(Statue(app, pos=(0, -1, 5)))
         add(Rose(app, pos=(0, -1, 5)))
-
+        #garden pt2
+        add(Pool(app, pos=(0, -1.3, 5)))
+        add(Col(app, pos=(2.3, -1, 6.5)))
+        add(Col(app, pos=(-2, -1, 6.5)))
+        add(Mari(app, pos=(-2, -0.4, 6.5)))
+        add(Mari(app, pos=(2.3, -0.4, 6.5)))
         num_objects = 10
         radius = 1
 

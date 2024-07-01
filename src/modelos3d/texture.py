@@ -35,6 +35,10 @@ class Texture:
         self.textures['ground'] = self.get_texture(path='objects/garden/ground.jpeg')
         self.textures['trunk'] = self.get_texture(path='objects/garden/trunk.jpg')
         self.textures['leavesTree'] = self.get_texture(path='objects/garden/leaveTree.jpg')
+        #garden pt2
+        self.textures['pool'] = self.get_texture(path='objects/pis/pool.jpeg')
+        self.textures['col'] = self.get_texture(path='objects/col/col.png')
+        self.textures['mari'] = self.get_texture(path='objects/mari/mari.jpeg')
         self.textures['skybox'] = self.get_texture_cube(dir_path='textures/skybox1/', ext='png')
         self.textures['depth_texture'] = self.get_depth_texture()
 

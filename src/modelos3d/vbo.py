@@ -3,6 +3,10 @@ import moderngl as mgl
 import pywavefront
 
 
+class ColVBO:
+    pass
+
+
 class VBO:
     def __init__(self, ctx):
         self.vbos = {}
@@ -19,20 +23,29 @@ class VBO:
         self.vbos['mujer'] = MujerVBO(ctx)
         self.vbos['ate'] = AteVBO(ctx)
         self.vbos['zeus'] = ZeusVBO(ctx)
-        # Garden
+        # < ===== Garden ====== >
         self.vbos['wall'] = WallVBO(ctx)
         self.vbos['leaf'] = LeavesVBO(ctx)
         self.vbos['petals'] = PetalVBO(ctx)
         self.vbos['grass'] = GrassVBO(ctx)
         self.vbos['steam'] = StemVBO(ctx)
         self.vbos['stigma'] = StigmaVBO(ctx)
+
         self.vbos['ground'] = GroundVBO(ctx)
         self.vbos['trunk'] = TrunkVBO(ctx)
         self.vbos['leavesTree'] = LeavesTree(ctx)
+
         self.vbos['roses'] = Roses(ctx)
         self.vbos['statue'] = StatueVBO(ctx)
+        #garden pt222
+
+        self.vbos['pool'] = Pool(ctx)
+        self.vbos['col'] = Col(ctx)
+        self.vbos['mari'] = Mari(ctx)
         self.vbos['skybox'] = SkyBoxVBO(ctx)
         self.vbos['advanced_skybox'] = AdvancedSkyBoxVBO(ctx)
+
+
 
     def destroy(self):
         [vbo.destroy() for vbo in self.vbos.values()]
@@ -268,123 +281,9 @@ class ZeusVBO(BaseVBO):
 
 
 #garden part
-
-class WallVBO(BaseVBO):
-    def _init_(self, app):
-       super()._init_(app)
-       self.format = '2f 3f 3f'
-       self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
-
-    def get_vertex_data(self):
-        objs = pywavefront.Wavefront('objects/garden/wall.obj', cache=True, parse=True)
-        obj = objs.materials.popitem()[1]
-        vertex_data = obj.vertices
-        vertex_data = np.array(vertex_data, dtype='f4')
-        return vertex_data
-class StatueVBO(BaseVBO):
-    def _init_(self, app):
-       super()._init_(app)
-       self.format = '2f 3f 3f'
-       self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
-
-    def get_vertex_data(self):
-        objs = pywavefront.Wavefront('objects/garden/statue.obj', cache=True, parse=True)
-        obj = objs.materials.popitem()[1]
-        vertex_data = obj.vertices
-        vertex_data = np.array(vertex_data, dtype='f4')
-        return vertex_data
-
-class StemVBO(BaseVBO):
-    def _init_(self, app):
-       super()._init_(app)
-       self.format = '2f 3f 3f'
-       self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
-
-    def get_vertex_data(self):
-        objs = pywavefront.Wavefront('objects/garden/Flower/steam.obj', cache=True, parse=True)
-        obj = objs.materials.popitem()[1]
-        vertex_data = obj.vertices
-        vertex_data = np.array(vertex_data, dtype='f4')
-        return vertex_data
-class StigmaVBO(BaseVBO):
-    def _init_(self, app):
-       super()._init_(app)
-       self.format = '2f 3f 3f'
-       self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
-
-    def get_vertex_data(self):
-        objs = pywavefront.Wavefront('objects/garden/Flower/stigma.obj', cache=True, parse=True)
-        obj = objs.materials.popitem()[1]
-        vertex_data = obj.vertices
-        vertex_data = np.array(vertex_data, dtype='f4')
-        return vertex_data
-class PetalVBO(BaseVBO):
-    def _init_(self, app):
-       super()._init_(app)
-       self.format = '2f 3f 3f'
-       self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
-
-    def get_vertex_data(self):
-        objs = pywavefront.Wavefront('objects/garden/Flower/petals.obj', cache=True, parse=True)
-        obj = objs.materials.popitem()[1]
-        vertex_data = obj.vertices
-        vertex_data = np.array(vertex_data, dtype='f4')
-        return vertex_data
-class GrassVBO(BaseVBO):
-    def _init_(self, app):
-       super()._init_(app)
-       self.format = '2f 3f 3f'
-       self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
-
-    def get_vertex_data(self):
-        objs = pywavefront.Wavefront('objects/garden/Flower/grass.obj', cache=True, parse=True)
-        obj = objs.materials.popitem()[1]
-        vertex_data = obj.vertices
-        vertex_data = np.array(vertex_data, dtype='f4')
-        return vertex_data
-class LeavesVBO(BaseVBO):
-    def _init_(self, app):
-       super()._init_(app)
-       self.format = '2f 3f 3f'
-       self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
-
-    def get_vertex_data(self):
-        objs = pywavefront.Wavefront('objects/garden/Flower/leaf.obj', cache=True, parse=True)
-        obj = objs.materials.popitem()[1]
-        vertex_data = obj.vertices
-        vertex_data = np.array(vertex_data, dtype='f4')
-        return vertex_data
-
-class Roses(BaseVBO):
-    def _init_(self, app):
-       super()._init_(app)
-       self.format = '2f 3f 3f'
-       self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
-
-    def get_vertex_data(self):
-        objs = pywavefront.Wavefront('objects/garden/roses.obj', cache=True, parse=True)
-        obj = objs.materials.popitem()[1]
-        vertex_data = obj.vertices
-        vertex_data = np.array(vertex_data, dtype='f4')
-        return vertex_data
-
-
-class TrunkVBO(BaseVBO):
-    def _init_(self, app):
-       super()._init_(app)
-       self.format = '2f 3f 3f'
-       self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
-
-    def get_vertex_data(self):
-        objs = pywavefront.Wavefront('objects/garden/trunks.obj', cache=True, parse=True)
-        obj = objs.materials.popitem()[1]
-        vertex_data = obj.vertices
-        vertex_data = np.array(vertex_data, dtype='f4')
-        return vertex_data
-
 class LeavesTree(BaseVBO):
-    def _init_(self, app):
-       super()._init_(app)
+    def __init__(self, app):
+       super().__init__(app)
        self.format = '2f 3f 3f'
        self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
 
@@ -396,13 +295,169 @@ class LeavesTree(BaseVBO):
         return vertex_data
 
 class GroundVBO(BaseVBO):
-    def _init_(self, app):
-       super()._init_(app)
+    def __init__(self, app):
+       super().__init__(app)
        self.format = '2f 3f 3f'
        self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
 
     def get_vertex_data(self):
         objs = pywavefront.Wavefront('objects/garden/ground.obj', cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data
+
+
+class WallVBO(BaseVBO):
+    def __init__(self, app):
+       super().__init__(app)
+       self.format = '2f 3f 3f'
+       self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/garden/wall.obj', cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data
+class StatueVBO(BaseVBO):
+    def __init__(self, app):
+       super().__init__(app)
+       self.format = '2f 3f 3f'
+       self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/garden/statue.obj', cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data
+
+class StemVBO(BaseVBO):
+    def __init__(self, app):
+       super().__init__(app)
+       self.format = '2f 3f 3f'
+       self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/garden/Flower/steam.obj', cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data
+class StigmaVBO(BaseVBO):
+    def __init__(self, app):
+       super().__init__(app)
+       self.format = '2f 3f 3f'
+       self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/garden/Flower/stigma.obj', cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data
+class PetalVBO(BaseVBO):
+    def __init__(self, app):
+       super().__init__(app)
+       self.format = '2f 3f 3f'
+       self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/garden/Flower/petals.obj', cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data
+
+class TrunkVBO(BaseVBO):
+    def __init__(self, app):
+       super().__init__(app)
+       self.format = '2f 3f 3f'
+       self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/garden/trunks.obj', cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data
+class GrassVBO(BaseVBO):
+    def __init__(self, app):
+       super().__init__(app)
+       self.format = '2f 3f 3f'
+       self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/garden/Flower/grass.obj', cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data
+class LeavesVBO(BaseVBO):
+    def __init__(self, app):
+       super().__init__(app)
+       self.format = '2f 3f 3f'
+       self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/garden/Flower/leaf.obj', cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data
+
+class Roses(BaseVBO):
+    def __init__(self, app):
+       super().__init__(app)
+       self.format = '2f 3f 3f'
+       self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/garden/roses.obj', cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data
+#garden pt2
+
+class Pool(BaseVBO):
+    def __init__(self, app):
+       super().__init__(app)
+       self.format = '2f 3f 3f'
+       self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/pis/pool.obj', cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data
+ #columna
+
+class Col(BaseVBO):
+    def __init__(self, app):
+        super().__init__(app)
+        self.format = '2f 3f 3f'
+        self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/col/columna.obj', cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data
+
+    #mariposa
+
+class Mari(BaseVBO):
+    def __init__(self, app):
+        super().__init__(app)
+        self.format = '2f 3f 3f'
+        self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/mari/mari.obj', cache=True, parse=True)
         obj = objs.materials.popitem()[1]
         vertex_data = obj.vertices
         vertex_data = np.array(vertex_data, dtype='f4')

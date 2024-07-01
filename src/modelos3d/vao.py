@@ -1,10 +1,11 @@
 from shader_program import ShaderProgram
+from vbo import VBO
 
 
 class VAO:
     def __init__(self, ctx):
         self.ctx = ctx
-        self.vbo =(ctx)
+        self.vbo = VBO(ctx)
         self.program = ShaderProgram(ctx)
         self.vaos = {}
 
@@ -132,8 +133,8 @@ class VAO:
             program=self.program.programs['shadow_map'],
             vbo=self.vbo.vbos['zeus'])
 
+        #  < ----- GARDEN ----- >
 
-        #garden part
         # wall
         self.vaos['wall'] = self.get_vao(
             program=self.program.programs['default'],
@@ -222,6 +223,33 @@ class VAO:
         self.vaos['shadow_statue'] = self.get_vao(
             program=self.program.programs['shadow_map'],
             vbo=self.vbo.vbos['statue'])
+        #garden pt2
+        self.vaos['pool'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['pool'])
+
+        self.vaos['shadow_pool'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['pool'])
+
+        #columna
+        self.vaos['col'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['col'])
+
+        self.vaos['shadow_col'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['col'])
+
+        #mariposa
+        self.vaos['mari'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['mari'])
+
+        self.vaos['shadow_mari'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['mari'])
+
 
         # skybox vao
         self.vaos['skybox'] = self.get_vao(
