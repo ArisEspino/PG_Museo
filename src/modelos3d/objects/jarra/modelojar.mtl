@@ -1,0 +1,12 @@
+# Blender 4.1.1 MTL File: 'None'
+# www.blender.org
+
+newmtl Scene_-_Root
+Ns 760.298950
+Ka 0.170732 0.170732 0.170732
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 3
+map_Kd C:/Scene_-_Root_baseColor.jpeg

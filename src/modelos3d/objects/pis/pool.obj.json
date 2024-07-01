@@ -1,0 +1,21 @@
+{
+  "created_at": "2024-06-30T23:23:42.339445",
+  "version": "0.1",
+  "mtllibs": [
+    "pool.mtl"
+  ],
+  "vertex_buffers": [
+    {
+      "material": "Material.001",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 0,
+      "byte_length": 11325984
+    },
+    {
+      "material": "Material.003",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 11325984,
+      "byte_length": 192
+    }
+  ]
+}

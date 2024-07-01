@@ -1,5 +1,5 @@
-from vbo import VBO
 from shader_program import ShaderProgram
+from vbo import VBO
 
 
 class VAO:
@@ -19,187 +19,237 @@ class VAO:
             program=self.program.programs['shadow_map'],
             vbo=self.vbo.vbos['cube'])
 
-        #  museo vao
+        #  museo pt1
         self.vaos['cat'] = self.get_vao(
             program=self.program.programs['default'],
             vbo=self.vbo.vbos['cat'])
 
-        # gradas cat vao
         self.vaos['shadow_cat'] = self.get_vao(
             program=self.program.programs['shadow_map'],
             vbo=self.vbo.vbos['cat'])
 
-
-        # modelo fuente vao
-        self.vaos['fuente'] = self.get_vao(
+     #head
+        self.vaos['head'] = self.get_vao(
             program=self.program.programs['default'],
-            vbo=self.vbo.vbos['fuente'])
+            vbo=self.vbo.vbos['head'])
 
-        # modelo fuente vao
-        self.vaos['shadow_fuente'] = self.get_vao(
+        self.vaos['shadow_head'] = self.get_vao(
             program=self.program.programs['shadow_map'],
-            vbo=self.vbo.vbos['fuente'])
-        #modelo mesa
+            vbo=self.vbo.vbos['head'])
+
+        #mesa
         self.vaos['mesa'] = self.get_vao(
             program=self.program.programs['default'],
             vbo=self.vbo.vbos['mesa'])
 
-        # modelo mesa vao
         self.vaos['shadow_mesa'] = self.get_vao(
             program=self.program.programs['shadow_map'],
             vbo=self.vbo.vbos['mesa'])
 
-        #modelos cara sobre mesas
-        self.vaos['cara'] = self.get_vao(
+        #herkules
+        self.vaos['herku'] = self.get_vao(
             program=self.program.programs['default'],
-            vbo=self.vbo.vbos['cara'])
+            vbo=self.vbo.vbos['herku'])
 
-        # modelo cara vao
-        self.vaos['shadow_cara'] = self.get_vao(
+        self.vaos['shadow_herku'] = self.get_vao(
             program=self.program.programs['shadow_map'],
-            vbo=self.vbo.vbos['cara'])
+            vbo=self.vbo.vbos['herku'])
 
-        #modelo cara2 mesa
-        self.vaos['face'] = self.get_vao(
+
+
+        #woman
+        self.vaos['woman'] = self.get_vao(
             program=self.program.programs['default'],
-            vbo=self.vbo.vbos['face'])
+            vbo=self.vbo.vbos['woman'])
 
-        # modelo cara2 vao
-        self.vaos['shadow_face'] = self.get_vao(
+        self.vaos['shadow_woman'] = self.get_vao(
             program=self.program.programs['shadow_map'],
-            vbo=self.vbo.vbos['face'])
+            vbo=self.vbo.vbos['woman'])
 
-        #choza modelo
-        self.vaos['choza'] = self.get_vao(
+        #man
+        self.vaos['man'] = self.get_vao(
             program=self.program.programs['default'],
-            vbo=self.vbo.vbos['choza'])
+            vbo=self.vbo.vbos['man'])
 
-        # modelo choza vao
-        self.vaos['shadow_choza'] = self.get_vao(
+        self.vaos['shadow_man'] = self.get_vao(
             program=self.program.programs['shadow_map'],
-            vbo=self.vbo.vbos['choza'])
+            vbo=self.vbo.vbos['man'])
 
+        #jarra
 
-  #herkules
-
-        self.vaos['her'] = self.get_vao(
+        self.vaos['jarra'] = self.get_vao(
             program=self.program.programs['default'],
-            vbo=self.vbo.vbos['her'])
+            vbo=self.vbo.vbos['jarra'])
 
-        # modelo col vao
-        self.vaos['shadow_her'] = self.get_vao(
+        self.vaos['shadow_jarra'] = self.get_vao(
             program=self.program.programs['shadow_map'],
-            vbo=self.vbo.vbos['her'])
-#mujer
+            vbo=self.vbo.vbos['jarra'])
 
+        #plato
+
+        self.vaos['plato'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['plato'])
+
+        self.vaos['shadow_plato'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['plato'])
+
+        #orar
+
+        self.vaos['orar'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['orar'])
+
+        self.vaos['shadow_orar'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['orar'])
+
+        #mujer
         self.vaos['mujer'] = self.get_vao(
             program=self.program.programs['default'],
             vbo=self.vbo.vbos['mujer'])
-
 
         self.vaos['shadow_mujer'] = self.get_vao(
             program=self.program.programs['shadow_map'],
             vbo=self.vbo.vbos['mujer'])
 
 
-        #soldado
 
-        self.vaos['sol'] = self.get_vao(
+       #atenea
+        self.vaos['ate'] = self.get_vao(
             program=self.program.programs['default'],
-            vbo=self.vbo.vbos['sol'])
+            vbo=self.vbo.vbos['ate'])
 
-        self.vaos['shadow_sol'] = self.get_vao(
+        self.vaos['shadow_ate'] = self.get_vao(
             program=self.program.programs['shadow_map'],
-            vbo=self.vbo.vbos['sol'])
-
-
-        #cabeza2
-        self.vaos['cab'] = self.get_vao(
+            vbo=self.vbo.vbos['ate'])
+        #zeus
+        self.vaos['zeus'] = self.get_vao(
             program=self.program.programs['default'],
-            vbo=self.vbo.vbos['cab'])
+            vbo=self.vbo.vbos['zeus'])
 
-        self.vaos['shadow_cab'] = self.get_vao(
+        self.vaos['shadow_zeus'] = self.get_vao(
             program=self.program.programs['shadow_map'],
-            vbo=self.vbo.vbos['cab'])
+            vbo=self.vbo.vbos['zeus'])
 
+        #  < ----- GARDEN ----- >
 
- #leon
-        self.vaos['leon'] = self.get_vao(
+        # wall
+        self.vaos['wall'] = self.get_vao(
             program=self.program.programs['default'],
-            vbo=self.vbo.vbos['leon'])
+            vbo=self.vbo.vbos['wall'])
 
-        self.vaos['shadow_leon'] = self.get_vao(
+        self.vaos['shadow_wall'] = self.get_vao(
             program=self.program.programs['shadow_map'],
-            vbo=self.vbo.vbos['leon'])
-
-
-#m1
-        self.vaos['m1'] = self.get_vao(
+            vbo=self.vbo.vbos['wall'])
+        # Garden
+        self.vaos['leaf'] = self.get_vao(
             program=self.program.programs['default'],
-            vbo=self.vbo.vbos['m1'])
+            vbo=self.vbo.vbos['leaf'])
 
-        self.vaos['shadow_m1'] = self.get_vao(
+        self.vaos['shadow_leaf'] = self.get_vao(
             program=self.program.programs['shadow_map'],
-            vbo=self.vbo.vbos['m1'])
+            vbo=self.vbo.vbos['leaf'])
 
-
-
-#m2
-        self.vaos['m2'] = self.get_vao(
+        self.vaos['petals'] = self.get_vao(
             program=self.program.programs['default'],
-            vbo=self.vbo.vbos['m2'])
+            vbo=self.vbo.vbos['petals'])
 
-        self.vaos['shadow_m2'] = self.get_vao(
+        self.vaos['shadow_petals'] = self.get_vao(
             program=self.program.programs['shadow_map'],
-            vbo=self.vbo.vbos['m2'])
+            vbo=self.vbo.vbos['petals'])
 
-
-#m3
-
-        self.vaos['m3'] = self.get_vao(
+        self.vaos['steam'] = self.get_vao(
             program=self.program.programs['default'],
-            vbo=self.vbo.vbos['m3'])
+            vbo=self.vbo.vbos['steam'])
 
-        self.vaos['shadow_m3'] = self.get_vao(
+        self.vaos['shadow_steam'] = self.get_vao(
             program=self.program.programs['shadow_map'],
-            vbo=self.vbo.vbos['m3'])
+            vbo=self.vbo.vbos['steam'])
 
-
-#m4
-
-        self.vaos['m4'] = self.get_vao(
+        self.vaos['grass'] = self.get_vao(
             program=self.program.programs['default'],
-            vbo=self.vbo.vbos['m4'])
+            vbo=self.vbo.vbos['grass'])
 
-        self.vaos['shadow_m4'] = self.get_vao(
+        self.vaos['shadow_grass'] = self.get_vao(
             program=self.program.programs['shadow_map'],
-            vbo=self.vbo.vbos['m4'])
+            vbo=self.vbo.vbos['grass'])
 
-
-
-
-
-#m5
-
-        self.vaos['m5'] = self.get_vao(
+        self.vaos['stigma'] = self.get_vao(
             program=self.program.programs['default'],
-            vbo=self.vbo.vbos['m5'])
+            vbo=self.vbo.vbos['stigma'])
 
-        self.vaos['shadow_m5'] = self.get_vao(
+        self.vaos['shadow_stigma'] = self.get_vao(
             program=self.program.programs['shadow_map'],
-            vbo=self.vbo.vbos['m5'])
+            vbo=self.vbo.vbos['stigma'])
 
-
-        #modelo de arboles
-
-        self.vaos['tree'] = self.get_vao(
+        self.vaos['ground'] = self.get_vao(
             program=self.program.programs['default'],
-            vbo=self.vbo.vbos['tree'])
+            vbo=self.vbo.vbos['ground'])
 
-        # modelo arboles vao
-        self.vaos['shadow_tree'] = self.get_vao(
+        self.vaos['shadow_ground'] = self.get_vao(
             program=self.program.programs['shadow_map'],
-            vbo=self.vbo.vbos['tree'])
+            vbo=self.vbo.vbos['ground'])
+
+        self.vaos['trunk'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['trunk'])
+
+        self.vaos['shadow_trunk'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['trunk'])
+
+        self.vaos['leavesTree'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['leavesTree'])
+
+        self.vaos['shadow_leavesTree'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['leavesTree'])
+
+        self.vaos['roses'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['roses'])
+
+        self.vaos['shadow_roses'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['roses'])
+
+        self.vaos['statue'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['statue'])
+
+        self.vaos['shadow_statue'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['statue'])
+        #garden pt2
+        self.vaos['pool'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['pool'])
+
+        self.vaos['shadow_pool'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['pool'])
+
+        #columna
+        self.vaos['col'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['col'])
+
+        self.vaos['shadow_col'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['col'])
+
+        #mariposa
+        self.vaos['mari'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['mari'])
+
+        self.vaos['shadow_mari'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['mari'])
+
 
         # skybox vao
         self.vaos['skybox'] = self.get_vao(

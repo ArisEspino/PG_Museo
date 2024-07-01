@@ -1,0 +1,15 @@
+{
+  "created_at": "2024-06-29T23:42:55.442436",
+  "version": "0.1",
+  "mtllibs": [
+    "roses.mtl"
+  ],
+  "vertex_buffers": [
+    {
+      "material": "01_-_Default",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 0,
+      "byte_length": 9600000
+    }
+  ]
+}
