@@ -24,7 +24,7 @@ class Scene:
         for x in range(-n, n, s):
             for z in range(-n, n, s):
                 add(Cube(app, pos=(x, -s, z)))
-<<<<<<< HEAD
+
         #aca se edita la pos donde estara el obj
         add(Cat(app, pos=(0, -1, -10)))
         add(Fuente(app, pos=(-5, -1, -4)))
@@ -63,7 +63,7 @@ class Scene:
         add(Choza(app, pos=(9.8, -1, -6)))  # chozaa
 
         #x,y,z
-=======
+
 
 #aca se edita la pos donde estara el obj
         add(Cat(app, pos=(0, -0.9, -5)))
@@ -110,4 +110,4 @@ class Scene:
             add(Trunk(app, pos=(0, -1, z)))
             add(LeavesTree(app, pos=(0, -1, z)))
             z -= 1
->>>>>>> feature/modelos3d
+
