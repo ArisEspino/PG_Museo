@@ -44,7 +44,7 @@ class Scene:
         self.app.positions_monument.append((-2.5, -4.5))        # 4
         add(Mujer(app, pos=(2.5, -0.90, -4.5)))
         self.app.positions_monument.append((2.5, -4.5))         # 5
-        add(Ate(app, pos=(2.5, -0.2, -2.5)))
+        add(Ate(app, pos=(2.5, -0.9, -2.5)))
         self.app.positions_monument.append((2.5, -2.5))         # 6
         add(Zeus(app, pos=(-2.5, -0.90, -2.5)))
         self.app.positions_monument.append((-2.5, -2.5))        # 7
