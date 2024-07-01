@@ -153,7 +153,7 @@ class Orar(ExtendedBaseModel):
 #mujer
 class Mujer(ExtendedBaseModel):
     def __init__(self, app, vao_name='mujer', tex_id='mujer',
-                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.001, 0.001, 0.001)):
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.01, 0.01, 0.01)):
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
 
 
