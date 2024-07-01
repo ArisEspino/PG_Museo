@@ -9,5 +9,5 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-map_Kd zeus_processed/textures/Material.001_baseColor.png
-map_Bump -bm 1.000000 C:/Material.001_normal.png
+map_Kd PG_Museo/PG_Museo/src/modelos3d/objects/zeus/zeus_processed/textures/Material.001_baseColor.png
+map_Bump -bm 1.000000 PG_Museo/PG_Museo/src/modelos3d/objects/zeus/C:/Material.001_normal.png

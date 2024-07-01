@@ -37,7 +37,7 @@ class Scene:
         self.app.positions_monument.append((-2.5, -7.6))    # Hercules 1
 
         add(Woman(app, pos=(2.5, -0.90, -7.6)))
-        self.app.positions_monument.append((2, -7.6))       # Afrodita 2
+        self.app.positions_monument.append((2.5, -7.6))       # Afrodita 2
 
         add(Man(app, pos=(0, -0.90, -7.6)))
         self.app.positions_monument.append((0, -7.6))       # Man 3
@@ -48,7 +48,7 @@ class Scene:
         add(Mujer(app, pos=(2.5, -0.90, -4.5)))
         self.app.positions_monument.append((2.5, -4.5))    # Mujer 5
 
-        add(Ate(app, pos=(2.5, -0.2, -2.5)))
+        add(Ate(app, pos=(2.5, -0.9, -2.5)))
         self.app.positions_monument.append((2.5, -2.5))    # Atenea 6
 
         add(Zeus(app, pos=(-2.5, -0.90, -2.5)))
