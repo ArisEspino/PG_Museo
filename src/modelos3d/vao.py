@@ -1,11 +1,10 @@
-from vbo import VBO
 from shader_program import ShaderProgram
 
 
 class VAO:
     def __init__(self, ctx):
         self.ctx = ctx
-        self.vbo = VBO(ctx)
+        self.vbo =(ctx)
         self.program = ShaderProgram(ctx)
         self.vaos = {}
 
@@ -132,6 +131,97 @@ class VAO:
         self.vaos['shadow_zeus'] = self.get_vao(
             program=self.program.programs['shadow_map'],
             vbo=self.vbo.vbos['zeus'])
+
+
+        #garden part
+        # wall
+        self.vaos['wall'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['wall'])
+
+        self.vaos['shadow_wall'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['wall'])
+        # Garden
+        self.vaos['leaf'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['leaf'])
+
+        self.vaos['shadow_leaf'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['leaf'])
+
+        self.vaos['petals'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['petals'])
+
+        self.vaos['shadow_petals'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['petals'])
+
+        self.vaos['steam'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['steam'])
+
+        self.vaos['shadow_steam'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['steam'])
+
+        self.vaos['grass'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['grass'])
+
+        self.vaos['shadow_grass'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['grass'])
+
+        self.vaos['stigma'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['stigma'])
+
+        self.vaos['shadow_stigma'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['stigma'])
+
+        self.vaos['ground'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['ground'])
+
+        self.vaos['shadow_ground'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['ground'])
+
+        self.vaos['trunk'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['trunk'])
+
+        self.vaos['shadow_trunk'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['trunk'])
+
+        self.vaos['leavesTree'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['leavesTree'])
+
+        self.vaos['shadow_leavesTree'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['leavesTree'])
+
+        self.vaos['roses'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['roses'])
+
+        self.vaos['shadow_roses'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['roses'])
+
+        self.vaos['statue'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['statue'])
+
+        self.vaos['shadow_statue'] = self.get_vao(
+            program=self.program.programs['shadow_map'],
+            vbo=self.vbo.vbos['statue'])
 
         # skybox vao
         self.vaos['skybox'] = self.get_vao(

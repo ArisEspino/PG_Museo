@@ -189,6 +189,74 @@ class SkyBox(BaseModel):
         self.program['m_proj'].write(self.camera.m_proj)
         self.program['m_view'].write(glm.mat4(glm.mat3(self.camera.m_view)))
 
+
+#garden part
+
+class Wall(ExtendedBaseModel): #este es el museo
+    def _init_(self, app, vao_name='wall', tex_id='wall',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.7, 0.7, 0.7)):
+        super()._init_(app, vao_name, tex_id, pos, rot, scale)
+
+
+# Garden
+
+class Leaf(ExtendedBaseModel): #este es el museo
+    def _init_(self, app, vao_name='leaf', tex_id='leaf',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.7, 0.7, 0.7)):
+        super()._init_(app, vao_name, tex_id, pos, rot, scale)
+
+class Statue(ExtendedBaseModel): #este es el museo
+    def _init_(self, app, vao_name='statue', tex_id='statue',
+                pos=(0, 0, 0), rot=(0, 180, 0), scale=(0.7, 0.7, 0.7)):
+        super()._init_(app, vao_name, tex_id, pos, rot, scale)
+
+class Rose(ExtendedBaseModel): #este es el museo
+    def _init_(self, app, vao_name='roses', tex_id='roses',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.7, 0.7, 0.7)):
+        super()._init_(app, vao_name, tex_id, pos, rot, scale)
+
+class Stigma(ExtendedBaseModel): #este es el museo
+    def _init_(self, app, vao_name='stigma', tex_id='stigma',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1)):
+        super()._init_(app, vao_name, tex_id, pos, rot, scale)
+
+class Petal(ExtendedBaseModel): #este es el museo
+    def _init_(self, app, vao_name='petals', tex_id='petals',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1)):
+        super()._init_(app, vao_name, tex_id, pos, rot, scale)
+
+class Ground(ExtendedBaseModel): #este es el museo
+    def _init_(self, app, vao_name='ground', tex_id='ground',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1)):
+        super()._init_(app, vao_name, tex_id, pos, rot, scale)
+
+class Trunk(ExtendedBaseModel): #este es el museo
+    def _init_(self, app, vao_name='trunk', tex_id='trunk',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.8, 0.8, 0.8)):
+        super()._init_(app, vao_name, tex_id, pos, rot, scale)
+
+class LeavesTree(ExtendedBaseModel): #este es el museo
+    def _init_(self, app, vao_name='leavesTree', tex_id='leavesTree',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.8, 0.8, 0.8)):
+        super()._init_(app, vao_name, tex_id, pos, rot, scale)
+
+class Stem(ExtendedBaseModel): #este es el museo
+    def _init_(self, app, vao_name='steam', tex_id='steam',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1)):
+        super()._init_(app, vao_name, tex_id, pos, rot, scale)
+
+class Grass(ExtendedBaseModel): #este es el museo
+    def _init_(self, app, vao_name='grass', tex_id='grass',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1)):
+        super()._init_(app, vao_name, tex_id, pos, rot, scale)
+
+
+
+
+
+#skybox part
+
+
 class AdvancedSkyBox(BaseModel):
     def __init__(self, app, vao_name='advanced_skybox', tex_id='skybox',
                  pos=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1)):

@@ -1,0 +1,52 @@
+# Blender 4.1.1 MTL File: 'None'
+# www.blender.org
+
+newmtl cherry_tree_leaves
+Ns 159.999985
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd C:/cherry_tree_leaves_baseColor.png
+map_d C:/cherry_tree_leaves_baseColor.png
+
+newmtl cherry_tree_leaves1
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd C:/cherry_tree_leaves_baseColor.png
+map_d C:/cherry_tree_leaves_baseColor.png
+
+newmtl cherry_tree_leaves2
+Ns 159.999985
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd C:/cherry_tree_leaves_baseColor.png
+map_d C:/cherry_tree_leaves_baseColor.png
+
+newmtl cherry_tree_leaves3
+Ns 159.999985
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd C:/cherry_tree_leaves_baseColor.png
+map_d C:/cherry_tree_leaves_baseColor.png
+
+newmtl cherry_tree_leaves4
+Ns 159.999985
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd C:/cherry_tree_leaves_baseColor.png
+map_d C:/cherry_tree_leaves_baseColor.png

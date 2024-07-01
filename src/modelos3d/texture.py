@@ -23,6 +23,18 @@ class Texture:
         self.textures['mujer'] = self.get_texture(path='objects/mujer/mujer.png')
         self.textures['ate'] = self.get_texture(path='objects/atenea/atenea.jpeg')
         self.textures['zeus'] = self.get_texture(path='objects/zeus/zeus.png')
+        #texturas garden part
+        self.textures['wall'] = self.get_texture(path='objects/garden/wall.png')
+        self.textures['leaf'] = self.get_texture(path='objects/garden/Flower/leaf.jpeg')
+        self.textures['stigma'] = self.get_texture(path='objects/garden/Flower/stigma.jpeg')
+        self.textures['petals'] = self.get_texture(path='objects/garden/Flower/petals.jpeg')
+        self.textures['steam'] = self.get_texture(path='objects/garden/Flower/steam.jpeg')
+        self.textures['grass'] = self.get_texture(path='objects/garden/Flower/grass.jpeg')
+        self.textures['statue'] = self.get_texture(path='objects/garden/statue.png')
+        self.textures['roses'] = self.get_texture(path='objects/garden/flowers.png')
+        self.textures['ground'] = self.get_texture(path='objects/garden/ground.jpeg')
+        self.textures['trunk'] = self.get_texture(path='objects/garden/trunk.jpg')
+        self.textures['leavesTree'] = self.get_texture(path='objects/garden/leaveTree.jpg')
         self.textures['skybox'] = self.get_texture_cube(dir_path='textures/skybox1/', ext='png')
         self.textures['depth_texture'] = self.get_depth_texture()
 
