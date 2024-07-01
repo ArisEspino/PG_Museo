@@ -32,6 +32,8 @@ class GraphicsEngine:
         self.delta_time = 0
         # luz
         self.light = Light()
+        # Array models
+        self.positions_monument = []
         # camara
         self.camera = Camera(self)
         # mesh part

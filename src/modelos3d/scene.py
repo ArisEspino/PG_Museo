@@ -25,19 +25,30 @@ class Scene:
             for z in range(-n, n, s):
                 add(Cube(app, pos=(x, -s, z)))
 
-#aca se edita la pos donde estara el obj
+        # aca se edita la pos donde estara el obj
         add(Cat(app, pos=(0, -0.9, -5)))
-        add(Head(app, pos=(0, -0.3, -5)))
-        add(Mesa(app, pos=(-0.3, -0.9, -4.3)))
-        add(Herku(app, pos=(-2.5, -0.25, -7.6)))
-        add(Woman(app, pos=(2.5, -0.90, -7.6)))
-        add(Man(app, pos=(0, -0.90, -7.6)))
         add(Jarra(app, pos=(-0.5, -0.53, -4.4)))
         add(Plato(app, pos=(0.5, -0.52, -4.4)))
+        add(Mesa(app, pos=(-0.3, -0.9, -4.3)))
+
+        # Estatuas
+        add(Head(app, pos=(0, -0.3, -5)))
+        self.app.positions_monument.append((0, -5))             # 0
+        add(Herku(app, pos=(-2.5, -0.25, -7.6)))
+        self.app.positions_monument.append((-2.5, -7.6))        # 1
+        add(Woman(app, pos=(2.5, -0.90, -7.6)))
+        self.app.positions_monument.append((2, -7.6))           # 2
+        add(Man(app, pos=(0, -0.90, -7.6)))
+        self.app.positions_monument.append((0, -7.6))           # 3
         add(Orar(app, pos=(-2.5, -0.80, -4.5)))
+        self.app.positions_monument.append((-2.5, -4.5))        # 4
         add(Mujer(app, pos=(2.5, -0.90, -4.5)))
+        self.app.positions_monument.append((2.5, -4.5))         # 5
         add(Ate(app, pos=(2.5, -0.2, -2.5)))
+        self.app.positions_monument.append((2.5, -2.5))         # 6
         add(Zeus(app, pos=(-2.5, -0.90, -2.5)))
+        self.app.positions_monument.append((-2.5, -2.5))        # 7
+
         #garden part
         add(Wall(app, pos=(0, -1, 5)))
         add(Statue(app, pos=(0, -1, 5)))
