@@ -1,0 +1,15 @@
+{
+  "created_at": "2024-06-29T23:42:55.998521",
+  "version": "0.1",
+  "mtllibs": [
+    "statue.mtl"
+  ],
+  "vertex_buffers": [
+    {
+      "material": "02_-_Default",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 0,
+      "byte_length": 288000
+    }
+  ]
+}
