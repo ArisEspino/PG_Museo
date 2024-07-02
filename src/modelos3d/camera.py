@@ -93,7 +93,7 @@ class Camera:
             self.z = self.position[2] + self.forward[2] * velocity
             bool_collisions = self.collisions.check_limits()
             bool_collisions_two = self.collisions_two.check_limits()
-            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions and bool_collisions_two:
+            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions and bool_collisions_two and self.verify():
                 self.position[0] = self.x
                 self.position[2] = self.z
         if keys[pg.K_s]:
@@ -101,7 +101,7 @@ class Camera:
             self.z = self.position[2] - self.forward[2] * velocity
             bool_collisions = self.collisions.check_limits()
             bool_collisions_two = self.collisions_two.check_limits()
-            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions and bool_collisions_two:
+            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions and bool_collisions_two and self.verify():
                 self.position[0] = self.x
                 self.position[2] = self.z
         if keys[pg.K_a]:
@@ -109,7 +109,7 @@ class Camera:
             self.z = self.position[2] - self.right[2] * velocity
             bool_collisions = self.collisions.check_limits()
             bool_collisions_two = self.collisions_two.check_limits()
-            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions and bool_collisions_two:
+            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions and bool_collisions_two and self.verify():
                 self.position[0] = self.x
                 self.position[2] = self.z
         if keys[pg.K_d]:
@@ -117,7 +117,7 @@ class Camera:
             self.z = self.position[2] + self.right[2] * velocity
             bool_collisions = self.collisions.check_limits()
             bool_collisions_two = self.collisions_two.check_limits()
-            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions and bool_collisions_two:
+            if self.limit[0] > self.z > self.limit[1] and self.limit[0] > self.x > self.limit[1] and bool_collisions and bool_collisions_two and self.verify():
                 self.position[0] = self.x
                 self.position[2] = self.z
         if keys[pg.K_w] or keys[pg.K_s] or keys[pg.K_a] or keys[pg.K_d]:
@@ -155,14 +155,22 @@ class Camera:
 
     def verify(self):
         vertices = ([
-            [-2.78, -2.14],
-            [-2.87, -7.81],
-            [2.76, -7.82],
-            [2.73, -2.15],
-            [3.23, -2.17],
-            [3.24, -8.27],
-            [-3.22, -8.35],
-            [-3.35, -2.11]
+            [-1.07, 2.5],
+            [-2.77, 2.51],
+            [-2.53, 7.31],
+            [2.80, 7.26],
+            [2.67, 2.51],
+            [0.97, 2.59],
+            [0.93, -1.89],
+            [0.0, -1.87],
+            [0.39, -2.14],
+            [2.89, -2.12],
+            [2.82, -7.84],
+            [-2.91, -7.86],
+            [-2.93, -2.07],
+            [-0.405, -2.08],
+            [-0.38, -1.78],
+            [-1.072, -1.78]
         ])
 
         # Definir el punto a verificar
@@ -188,6 +196,6 @@ class Camera:
 
         # Verificar si el punto está dentro del hexágono en el plano 'xz'
         if is_point_in_polygon(P, vertices):
-            return False
-        else:
             return True
+        else:
+            return False
