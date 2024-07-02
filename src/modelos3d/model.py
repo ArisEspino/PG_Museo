@@ -162,7 +162,7 @@ class Mujer(ExtendedBaseModel):
 #atenea
 class Ate(ExtendedBaseModel):
     def __init__(self, app, vao_name='ate', tex_id='ate',
-                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.002, 0.002, 0.002)):
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.007, 0.007, 0.007)):
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
 
 #zeus
