@@ -153,7 +153,7 @@ class Orar(ExtendedBaseModel):
 #mujer
 class Mujer(ExtendedBaseModel):
     def __init__(self, app, vao_name='mujer', tex_id='mujer',
-                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.01, 0.01, 0.01)):
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.001, 0.001, 0.001)):
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
 
 
@@ -162,7 +162,7 @@ class Mujer(ExtendedBaseModel):
 #atenea
 class Ate(ExtendedBaseModel):
     def __init__(self, app, vao_name='ate', tex_id='ate',
-                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.007, 0.007, 0.007)):
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.002, 0.002, 0.002)):
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
 
 #zeus
@@ -188,6 +188,90 @@ class SkyBox(BaseModel):
         # mvp
         self.program['m_proj'].write(self.camera.m_proj)
         self.program['m_view'].write(glm.mat4(glm.mat3(self.camera.m_view)))
+
+
+class Wall(ExtendedBaseModel): #este es el museo
+    def __init__(self, app, vao_name='wall', tex_id='wall',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.7, 0.7, 0.7)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+
+# Garden
+
+class Leaf(ExtendedBaseModel): #este es el museo
+    def __init__(self, app, vao_name='leaf', tex_id='leaf',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.7, 0.7, 0.7)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+class Statue(ExtendedBaseModel): #este es el museo
+    def __init__(self, app, vao_name='statue', tex_id='statue',
+                pos=(0, 0, 0), rot=(0, 180, 0), scale=(0.7, 0.7, 0.7)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+class Rose(ExtendedBaseModel): #este es el museo
+    def __init__(self, app, vao_name='roses', tex_id='roses',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.7, 0.7, 0.7)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+class Stigma(ExtendedBaseModel): #este es el museo
+    def __init__(self, app, vao_name='stigma', tex_id='stigma',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+class Petal(ExtendedBaseModel): #este es el museo
+    def __init__(self, app, vao_name='petals', tex_id='petals',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+class Ground(ExtendedBaseModel): #este es el museo
+    def __init__(self, app, vao_name='ground', tex_id='ground',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+class Trunk(ExtendedBaseModel): #este es el museo
+    def __init__(self, app, vao_name='trunk', tex_id='trunk',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.8, 0.8, 0.8)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+class LeavesTree(ExtendedBaseModel): #este es el museo
+    def __init__(self, app, vao_name='leavesTree', tex_id='leavesTree',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.8, 0.8, 0.8)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+class Stem(ExtendedBaseModel): #este es el museo
+    def __init__(self, app, vao_name='steam', tex_id='steam',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+class Grass(ExtendedBaseModel): #este es el museo
+    def __init__(self, app, vao_name='grass', tex_id='grass',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+#garden pt2
+class Pool(ExtendedBaseModel): #este es el museo
+    def __init__(self, app, vao_name='pool', tex_id='pool',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.4, 0.4, 0.4)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+
+#columna
+
+class Col(ExtendedBaseModel):  # este es el museo
+     def __init__(self, app, vao_name='col', tex_id='col',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.05, 0.05, 0.05)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+#mariposa
+
+class Mari(ExtendedBaseModel):  # este es el museo
+     def __init__(self, app, vao_name='mari', tex_id='mari',
+                pos=(0, 0, 0), rot=(0, 0, 0), scale=(0.005, 0.005, 0.005)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+
+#skybox part
+
 
 class AdvancedSkyBox(BaseModel):
     def __init__(self, app, vao_name='advanced_skybox', tex_id='skybox',
