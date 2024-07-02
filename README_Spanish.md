@@ -1,4 +1,4 @@
-# museos griegos
+# Greek museums
 [![Pg-Image.jpg](https://i.postimg.cc/rsdjVymB/Pg-Image.jpg)](https://postimg.cc/vxsfXs5h)
 
 Los museos griegos son guardianes del rico patrimonio cultural de Grecia y albergan tesoros que se remontan a la antigüedad clásica. Desde esculturas y cerámicas hasta representaciones de dioses y figuras importantes, estos museos ofrecen una ventana única a la antigua civilización griega, destacando sus logros en el arte, la filosofía y la arquitectura. Este proyecto busca honrar estos recuerdos y brindar una inmersión cultural educativa, preservando y celebrando el rico patrimonio de Grecia.
