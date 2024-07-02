@@ -48,3 +48,11 @@ https://github.com/ArisEspino/PG_Museo.git
 https://youtu.be/OjtHKSiJGqk?si=TcgzrvyBeTOILyyS
 
 ```
+
+## Reference videos used
+```bash
+https://youtu.be/eJDIsFJN4OQ?si=VZSxI9-GcaFukZhu
+
+https://youtu.be/U_wLRofbppA?si=rzfOdX1bcE5xhoNV
+
+```
