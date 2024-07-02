@@ -15,7 +15,7 @@ Hechos por:
 ## ¿Cómo es la funcionalidad?
 - Navegación:
 Teclas AWSD: utilice estas teclas para navegar por el terreno virtual, lo que le permitirá explorar el entorno libremente.
--Control de cámara:
+- Control de cámara:
 Funcionalidad del ratón: El ratón funciona como cámara, lo que le permite mirar a su alrededor y experimentar el entorno desde diferentes perspectivas.
 - Control de música:
 Teclas direccionales (arriba, abajo, derecha): utilice estas teclas para cambiar la música de fondo y mejorar el ambiente de su exploración.
@@ -42,9 +42,19 @@ https://github.com/ArisEspino/PG_Museo.git
 
 ```
 
-## Enlace de video
+## Enlace de video Greek museums
 
 ```golpecito
 https://youtu.be/OjtHKSiJGqk?si=TcgzrvyBeTOILyyS
 
 ```
+
+## Videos de referencia utilizado
+
+```golpecito
+https://youtu.be/U_wLRofbppA?si=gzfn1ND9i9NDtu-V
+
+https://youtu.be/eJDIsFJN4OQ?si=LP8rBqO5RnZNZjZt
+
+```
+
