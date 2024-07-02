@@ -14,7 +14,7 @@ SENSITIVITY = 0.08
 
 
 class Camera:
-    def __init__(self, app, position=(0, 0, 4), yaw=-90, pitch=0):
+    def __init__(self, app, position=(-0.06, 0, 2.72), yaw=-90, pitch=0):
         self.app = app
         self.aspect_ratio = app.WIN_SIZE[0] / app.WIN_SIZE[1]
         self.position = glm.vec3(position)
@@ -155,18 +155,14 @@ class Camera:
 
     def verify(self):
         vertices = ([
-            [20.4, 9.29],
-            [3.72, -0.79],
-            [3.47, -19.76],
-            [20.15, -29.22],
-            [36.78, -19.48],
-            [36.94, 0.35],
-            [38.39, -0.12],
-            [38.114, -20.06],
-            [19.96, -31.10],
-            [1.74, -20.23],
-            [1.80, 0.52],
-            [19.48, 11.28]
+            [-2.78, -2.14],
+            [-2.87, -7.81],
+            [2.76, -7.82],
+            [2.73, -2.15],
+            [3.23, -2.17],
+            [3.24, -8.27],
+            [-3.22, -8.35],
+            [-3.35, -2.11]
         ])
 
         # Definir el punto a verificar
