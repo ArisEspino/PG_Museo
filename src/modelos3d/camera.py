@@ -78,7 +78,7 @@ class Camera:
                 if keys[pg.K_p]:
                     if not pg.mixer.Channel(0).get_busy() and self.pauseOn == 2:
                         self.play_sound(i)
-                        print('Play', i)
+                        print('PlayVoice', i)
                         self.pauseOn = 1
                     else:
                         self.pause_sound()
