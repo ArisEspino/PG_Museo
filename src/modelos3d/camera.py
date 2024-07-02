@@ -2,19 +2,18 @@ import time
 
 import glm
 import pygame as pg
-from math import sqrt
-from collisions import Collisions
-from collisions import Collisions_two
 
-FOV = 50  # deg
+#declaraciones
+FOV = 50
 NEAR = 0.1
-FAR = 100
+FAR = 200
 SPEED = 0.005
-SENSITIVITY = 0.08
+SENSITIVITY = 0.04
 
 
 class Camera:
-    def __init__(self, app, position=(0, 0, 4), yaw=-90, pitch=0):
+    def __init__(self, app, position=(4.86, 0, 3.17), yaw=-90, pitch=0):
+        # position before: (43.62, 1, 27.42)
         self.app = app
         self.aspect_ratio = app.WIN_SIZE[0] / app.WIN_SIZE[1]
         self.position = glm.vec3(position)
@@ -26,7 +25,7 @@ class Camera:
 
         self.yaw = yaw
         self.pitch = pitch
-        # view matrix
+        # matriz vista
         self.m_view = self.get_view_matrix()
         # projection matrix
         self.m_proj = self.get_projection_matrix()
