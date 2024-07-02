@@ -2,7 +2,8 @@ import time
 
 import glm
 import pygame as pg
-
+from math import sqrt
+from collisions import Collisions, Collisions_two
 #declaraciones
 FOV = 50
 NEAR = 0.1
@@ -12,7 +13,7 @@ SENSITIVITY = 0.04
 
 
 class Camera:
-    def __init__(self, app, position=(4.86, 0, 3.17), yaw=-90, pitch=0):
+    def __init__(self, app, position=(0, 0, 3.17), yaw=-90, pitch=0):
         # position before: (43.62, 1, 27.42)
         self.app = app
         self.aspect_ratio = app.WIN_SIZE[0] / app.WIN_SIZE[1]
