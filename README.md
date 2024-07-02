@@ -13,13 +13,13 @@ By:
 - Jaen Rojas Luis Carlos
 
 ## What is the functionality like?
-Navigation:
+- Navigation:
 AWSD Keys: Use these keys to navigate through the virtual terrain, allowing you to explore the environment freely.
-Camera Control:
+- Camera Control:
 Mouse Functionality: The mouse functions as the camera, giving you the ability to look around and experience the environment from different perspectives.
-Music Control:
+- Music Control:
 Directional Keys (Up, Down, Right): Use these keys to change the background music, enhancing the ambiance of your exploration.
-Audio Descriptions:
+- Audio Descriptions:
 Interact with Statues: When you approach a statue, press 'P' to activate an audio description that provides detailed information about the statue, enriching your understanding of the displayed art.
  
 
